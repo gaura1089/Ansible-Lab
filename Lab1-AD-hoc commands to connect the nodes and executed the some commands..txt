@@ -1,0 +1,753 @@
+PS C:\Users\Gaurav.26\Downloads\repo\Linux-mac> ssh -i .\id_rsa ec2-user@15.206.66.13
+The authenticity of host '15.206.66.13 (15.206.66.13)' can't be established.
+ED25519 key fingerprint is SHA256:tVh61J0I3K8fg18dyUHOcKWK26iV6a7ic9911uYwojg.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '15.206.66.13' (ED25519) to the list of known hosts.
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-33-111 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-33-111 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible --verison
+usage: ansible [-h] [--version] [-v] [-b] [--become-method BECOME_METHOD] [--become-user BECOME_USER]
+               [-K | --become-password-file BECOME_PASSWORD_FILE] [-i INVENTORY] [--list-hosts] [-l SUBSET]
+               [-P POLL_INTERVAL] [-B SECONDS] [-o] [-t TREE] [--private-key PRIVATE_KEY_FILE] [-u REMOTE_USER]
+               [-c CONNECTION] [-T TIMEOUT] [--ssh-common-args SSH_COMMON_ARGS] [--sftp-extra-args SFTP_EXTRA_ARGS]
+               [--scp-extra-args SCP_EXTRA_ARGS] [--ssh-extra-args SSH_EXTRA_ARGS]
+               [-k | --connection-password-file CONNECTION_PASSWORD_FILE] [-C] [-D] [-e EXTRA_VARS]
+               [--vault-id VAULT_IDS] [--ask-vault-password | --vault-password-file VAULT_PASSWORD_FILES] [-f FORKS]
+               [-M MODULE_PATH] [--playbook-dir BASEDIR] [--task-timeout TASK_TIMEOUT] [-a MODULE_ARGS]
+               [-m MODULE_NAME]
+               pattern
+ansible: error: the following arguments are required: pattern
+
+usage: ansible [-h] [--version] [-v] [-b] [--become-method BECOME_METHOD] [--become-user BECOME_USER]
+               [-K | --become-password-file BECOME_PASSWORD_FILE] [-i INVENTORY] [--list-hosts] [-l SUBSET]
+               [-P POLL_INTERVAL] [-B SECONDS] [-o] [-t TREE] [--private-key PRIVATE_KEY_FILE] [-u REMOTE_USER]
+               [-c CONNECTION] [-T TIMEOUT] [--ssh-common-args SSH_COMMON_ARGS] [--sftp-extra-args SFTP_EXTRA_ARGS]
+               [--scp-extra-args SCP_EXTRA_ARGS] [--ssh-extra-args SSH_EXTRA_ARGS]
+               [-k | --connection-password-file CONNECTION_PASSWORD_FILE] [-C] [-D] [-e EXTRA_VARS]
+               [--vault-id VAULT_IDS] [--ask-vault-password | --vault-password-file VAULT_PASSWORD_FILES] [-f FORKS]
+               [-M MODULE_PATH] [--playbook-dir BASEDIR] [--task-timeout TASK_TIMEOUT] [-a MODULE_ARGS]
+               [-m MODULE_NAME]
+               pattern
+
+Define and run a single task 'playbook' against a set of hosts
+
+positional arguments:
+  pattern               host pattern
+
+optional arguments:
+  --ask-vault-password, --ask-vault-pass
+                        ask for vault password
+  --become-password-file BECOME_PASSWORD_FILE, --become-pass-file BECOME_PASSWORD_FILE
+                        Become password file
+  --connection-password-file CONNECTION_PASSWORD_FILE, --conn-pass-file CONNECTION_PASSWORD_FILE
+                        Connection password file
+  --list-hosts          outputs a list of matching hosts; does not execute anything else
+  --playbook-dir BASEDIR
+                        Since this tool does not use playbooks, use this as a substitute playbook directory. This sets
+                        the relative path for many features including roles/ group_vars/ etc.
+  --task-timeout TASK_TIMEOUT
+                        set task timeout limit in seconds, must be positive integer.
+  --vault-id VAULT_IDS  the vault identity to use
+  --vault-password-file VAULT_PASSWORD_FILES, --vault-pass-file VAULT_PASSWORD_FILES
+                        vault password file
+  --version             show program's version number, config file location, configured module search path, module
+                        location, executable location and exit
+  -B SECONDS, --background SECONDS
+                        run asynchronously, failing after X seconds (default=N/A)
+  -C, --check           don't make any changes; instead, try to predict some of the changes that may occur
+  -D, --diff            when changing (small) files and templates, show the differences in those files; works great
+                        with --check
+  -K, --ask-become-pass
+                        ask for privilege escalation password
+  -M MODULE_PATH, --module-path MODULE_PATH
+                        prepend colon-separated path(s) to module library (default={{ ANSIBLE_HOME ~
+                        "/plugins/modules:/usr/share/ansible/plugins/modules" }})
+  -P POLL_INTERVAL, --poll POLL_INTERVAL
+                        set the poll interval if using -B (default=15)
+  -a MODULE_ARGS, --args MODULE_ARGS
+                        The action's options in space separated k=v format: -a 'opt1=val1 opt2=val2' or a json string:
+                        -a '{"opt1": "val1", "opt2": "val2"}'
+  -e EXTRA_VARS, --extra-vars EXTRA_VARS
+                        set additional variables as key=value or YAML/JSON, if filename prepend with @
+  -f FORKS, --forks FORKS
+                        specify number of parallel processes to use (default=5)
+  -h, --help            show this help message and exit
+  -i INVENTORY, --inventory INVENTORY, --inventory-file INVENTORY
+                        specify inventory host path or comma separated host list. --inventory-file is deprecated
+  -k, --ask-pass        ask for connection password
+  -l SUBSET, --limit SUBSET
+                        further limit selected hosts to an additional pattern
+  -m MODULE_NAME, --module-name MODULE_NAME
+                        Name of the action to execute (default=command)
+  -o, --one-line        condense output
+  -t TREE, --tree TREE  log output to this directory
+  -v, --verbose         Causes Ansible to print more debug messages. Adding multiple -v will increase the verbosity,
+                        the builtin plugins currently evaluate up to -vvvvvv. A reasonable level to start is -vvv,
+                        connection debugging might require -vvvv.
+
+Privilege Escalation Options:
+  control how and which user you become as on target hosts
+
+  --become-method BECOME_METHOD
+                        privilege escalation method to use (default=sudo), use `ansible-doc -t become -l` to list
+                        valid choices.
+  --become-user BECOME_USER
+                        run operations as this user (default=root)
+  -b, --become          run operations with become (does not imply password prompting)
+
+Connection Options:
+  control as whom and how to connect to hosts
+
+  --private-key PRIVATE_KEY_FILE, --key-file PRIVATE_KEY_FILE
+                        use this file to authenticate the connection
+  --scp-extra-args SCP_EXTRA_ARGS
+                        specify extra arguments to pass to scp only (e.g. -l)
+  --sftp-extra-args SFTP_EXTRA_ARGS
+                        specify extra arguments to pass to sftp only (e.g. -f, -l)
+  --ssh-common-args SSH_COMMON_ARGS
+                        specify common arguments to pass to sftp/scp/ssh (e.g. ProxyCommand)
+  --ssh-extra-args SSH_EXTRA_ARGS
+                        specify extra arguments to pass to ssh only (e.g. -R)
+  -T TIMEOUT, --timeout TIMEOUT
+                        override the connection timeout in seconds (default=10)
+  -c CONNECTION, --connection CONNECTION
+                        connection type to use (default=smart)
+  -u REMOTE_USER, --user REMOTE_USER
+                        connect as this user (default=None)
+
+Some actions do not make sense in Ad-Hoc (include, meta, etc)
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible --version
+ansible [core 2.15.3]
+  config file = /home/ec2-user/ansible_project/ansible.cfg
+  configured module search path = ['/home/ec2-user/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.9/site-packages/ansible
+  ansible collection location = /home/ec2-user/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.9.23 (main, Aug 11 2025, 00:00:00) [GCC 11.5.0 20240719 (Red Hat 11.5.0-5)] (/usr/bin/python3.9)
+  jinja version = 3.1.4
+  libyaml = True
+[ec2-user@ip-172-31-33-111 ansible_project]$
+[ec2-user@ip-172-31-33-111 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-33-111 ansible_project]$ cat myhosts.ini
+[webservers]
+node1 ansible_host=172.31.44.16 ansible_user=ec2-user
+[ec2-user@ip-172-31-33-111 ansible_project]$ vi myhosts.ini
+[ec2-user@ip-172-31-33-111 ansible_project]$ cat ansible.cfg
+[defaults]
+inventory = ./myhosts.ini
+host_key_checking = False
+[ec2-user@ip-172-31-33-111 ansible_project]$ cd ..
+[ec2-user@ip-172-31-33-111 ~]$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ec2-user/.ssh/id_rsa):
+/home/ec2-user/.ssh/id_rsa already exists.
+Overwrite (y/n)?
+[ec2-user@ip-172-31-33-111 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-33-111 ~]$ ls -a
+.  ..  .ansible  .bash_logout  .bash_profile  .bashrc  .ssh  .viminfo  ansible_project
+[ec2-user@ip-172-31-33-111 ~]$ ansible all --list-host
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match
+'all'
+  hosts (0):
+[ec2-user@ip-172-31-33-111 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible all --list-host
+  hosts (2):
+    node1
+    node2
+[ec2-user@ip-172-31-33-111 ansible_project]$ cd ..
+[ec2-user@ip-172-31-33-111 ~]$ cat ~/.ssh/id_rsa.pub | ssh ec2-user@13.201.3.188 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+The authenticity of host '13.201.3.188 (13.201.3.188)' can't be established.
+ED25519 key fingerprint is SHA256:AVnNwvYUVn/OwlfFFgm2UFoep+Zwj3EYVdCOTHaAou4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.201.3.188' (ED25519) to the list of known hosts.
+ec2-user@13.201.3.188: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+[ec2-user@ip-172-31-33-111 ~]$ ssh -i id_rsa.pem ec2-user@13.201.3.188
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for 'id_rsa.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "id_rsa.pem": bad permissions
+ec2-user@13.201.3.188: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+[ec2-user@ip-172-31-33-111 ~]$ chown 600 id_rsa.pem ec2-user
+chown: changing ownership of 'id_rsa.pem': Operation not permitted
+chown: cannot access 'ec2-user': No such file or directory
+[ec2-user@ip-172-31-33-111 ~]$ chown 600 ec2-user id_rsa.pem
+chown: cannot access 'ec2-user': No such file or directory
+chown: changing ownership of 'id_rsa.pem': Operation not permitted
+[ec2-user@ip-172-31-33-111 ~]$ ls -l
+total 4
+drwxr-xr-x. 2 ec2-user ec2-user   44 Oct 16 09:22 ansible_project
+-rw-rw-r--. 1 ec2-user ec2-user 2459 Oct 16 09:26 id_rsa.pem
+[ec2-user@ip-172-31-33-111 ~]$ chmod 600 id_rsa.pem
+[ec2-user@ip-172-31-33-111 ~]$ ls -l
+total 4
+drwxr-xr-x. 2 ec2-user ec2-user   44 Oct 16 09:22 ansible_project
+-rw-------. 1 ec2-user ec2-user 2459 Oct 16 09:26 id_rsa.pem
+[ec2-user@ip-172-31-33-111 ~]$ ssh -i id_rsa.pem ec2-user@13.201.3.188
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-45-59 ~]$ lsls
+-bash: lsls: command not found
+[ec2-user@ip-172-31-45-59 ~]$
+[ec2-user@ip-172-31-45-59 ~]$
+[ec2-user@ip-172-31-45-59 ~]$ ls
+[ec2-user@ip-172-31-45-59 ~]$ ls -l
+total 0
+[ec2-user@ip-172-31-45-59 ~]$ ls -a
+.  ..  .bash_logout  .bash_profile  .bashrc  .ssh
+[ec2-user@ip-172-31-45-59 ~]$ exit
+logout
+Connection to 13.201.3.188 closed.
+[ec2-user@ip-172-31-33-111 ~]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.201.3.188 && cat >> ~/.ssh/authorized_keys"
+>
+>
+-bash: unexpected EOF while looking for matching `"'
+> ^C
+
+
+[ec2-user@ip-172-31-33-111 ~]$ cp ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.201.3.188 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+cp: missing destination file operand after '/home/ec2-user/.ssh/id_rsa.pub'
+Try 'cp --help' for more information.
+[ec2-user@ip-172-31-33-111 ~]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.201.3.188 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+[ec2-user@ip-172-31-33-111 ~]$ ssh -i id_rsa.pem ec2-user@13.201.3.188
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Oct 16 09:36:04 2025 from 15.206.66.13
+[ec2-user@ip-172-31-45-59 ~]$ cd .ssh
+[ec2-user@ip-172-31-45-59 .ssh]$ ls
+authorized_keys
+[ec2-user@ip-172-31-45-59 .ssh]$ cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTi75rMeuLAOO1V7tcxmUykOyz44x5jfR8tlKITuf/nA9573soVOaSl0xiDqNrGYwN2BdFXvklI36FncKZrRs7+LCjcw/q9aEkNxurDKpECb212+f/waiOnXQMBr7O6peVkzg6u1GaRL2o9xgnd/xRI3/D0lpDFzjV73Du0tKr2QMFeq78szIH8pXNORMuJSUn/MH4P32v3xWQ9NuVnhD77B1yRkFDy0OuRWgQKqVWE1oQZ5Vsb/Og3jyjNN4MXqPARGtZXw/FIZeGDZ/MFgdRjGPH3d1nXm3zUuQQx3kj8P0SaYE5b8OkaK8TtO/3GKlwo5P7XDku/lDu/Hp5JGbIlGxglv+eAG4XXGu8Sudi5dmiYTyEndmuEqI9hWRA19uaNPORqAzfZoHQT2a0kCEy3hEl2ifCKttjkrWs6QWf95/9PL6VJIAlTBxV/ldJexB71+zOEq9OYFSQmoRNTXHRPdckBhxKyKkwhGdC2EZfuE3qF3QnjW678EWTVi8lgEs= Ansible
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC+4MN4KuYQkALrb+b92iAHPsEHCwzI5EjNRsNPmo+of5pEoAdRqQNXIQIwVuMHGfDZwShNNHIInNoFs2sH6nEvJ2k3H8ZoqiAsBRvbDB7v5saMvjnScJ8ysi6Ju7sxwnKvLJTRzrt83V4CNn10yzgOhjytYCNiV9HE47TjFoefT3K8nuCRQ/LKkonExr0w/mgW6ptKf+LHkkn1wIH9g0uF8LaBfar+5HSxGHVWUisn40gPkptP3UEHBUXO6WZ/qYju+vbJnWQD2TDWjdf8wwZUCrDFQnrZwXDzAjhKQxO2kPNa/IyAdD0xMKEEBscMe1zZa1qSeuboVmpfnaFPXaJu6iusSZq+DxlfIfYs6Yhc0YNuQirLW40bhVg312bCnZbTk/B4nr5DHi9pj9lfc/5irW/lcax0W4YRDLz3jARD38nNU17WV96uLh9iYzSCslAsGpiv8JGBB684hBlCBQ1ZRdy2ebifXbA4CxT1JVEL6OH9IPYuWIH6HoV5Lg0mqi7UEBGhUe29OhEk8kf0BCS2InHqu6nviHJlC7YuqIv8dQDtR6XnUrxPnkD2FzCa8WLiGqrnZDij5Y5y9TYTuohmUZmiuJ9IazVud+T4XXeGn3B49dCcMY9BUvTnz1Lkc7OK+NelWnxj7hgjfE1I9+RN4mXgEVTTsJowjY/vvVPZgw== root@ip-172-31-33-111.ap-south-1.compute.internal
+[ec2-user@ip-172-31-45-59 .ssh]$ cd ..
+[ec2-user@ip-172-31-45-59 ~]$ exit
+logout
+Connection to 13.201.3.188 closed.
+[ec2-user@ip-172-31-33-111 ~]$ ansible webserver -a "ls"
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+[WARNING]: Could not match supplied host pattern, ignoring: webserver
+[ec2-user@ip-172-31-33-111 ~]$ ls
+ansible_project  id_rsa.pem
+[ec2-user@ip-172-31-33-111 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-33-111 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webserver -a "ls"
+[WARNING]: Could not match supplied host pattern, ignoring: webserver
+[WARNING]: No hosts matched, nothing to do
+[ec2-user@ip-172-31-33-111 ansible_project]$ cat myhosts.ini
+[webservers]
+node1 ansible_host=node1 ansible_host=172.31.45.59 ansible_user=ec2-user
+node2 ansible_host=node2 ansible_host=172.31.37.55 ansible_user=ec2-user
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webservers -a "ls"
+node2 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '172.31.37.55' (ED25519) to the list of known hosts.\r\nec2-user@172.31.37.55: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).",
+    "unreachable": true
+}
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | CHANGED | rc=0 >>
+
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webservers[0] -a "touch filea"
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | CHANGED | rc=0 >>
+
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webservers[0] -a "mmkdir gaurav"
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | FAILED | rc=2 >>
+[Errno 2] No such file or directory: b'mmkdir'
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webservers[0] -a "mkdir gaurav"
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | CHANGED | rc=0 >>
+
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible all -a "mkdir hari"
+node2 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ec2-user@172.31.37.55: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).",
+    "unreachable": true
+}
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | CHANGED | rc=0 >>
+
+[ec2-user@ip-172-31-33-111 ansible_project]$ cd ..
+[ec2-user@ip-172-31-33-111 ~]$  cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.232.44.137 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+The authenticity of host '13.232.44.137 (13.232.44.137)' can't be established.
+ED25519 key fingerprint is SHA256:bKAAdgARFZJhkNlyoFHdDIKCK8cy+Rvt1vYGKeDzLPI.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:4: 172.31.37.55
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.232.44.137' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-33-111 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-33-111 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible all -a "mkdir hari1"
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | CHANGED | rc=0 >>
+
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node2 | CHANGED | rc=0 >>
+
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webservers -a "yum install httpd -y"
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | FAILED | rc=1 >>
+Error: This command has to be run with superuser privileges (under the root user on most systems).non-zero return code
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node2 | FAILED | rc=1 >>
+Error: This command has to be run with superuser privileges (under the root user on most systems).non-zero return code
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webservers -a "sudo yum install httpd -y"
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | CHANGED | rc=0 >>
+Amazon Linux 2023 Kernel Livepatch repository   250 kB/s |  26 kB     00:00
+Dependencies resolved.
+================================================================================
+ Package               Arch     Version                     Repository     Size
+================================================================================
+Installing:
+ httpd                 x86_64   2.4.65-1.amzn2023.0.1       amazonlinux    47 k
+Installing dependencies:
+ apr                   x86_64   1.7.5-1.amzn2023.0.4        amazonlinux   129 k
+ apr-util              x86_64   1.6.3-1.amzn2023.0.1        amazonlinux    98 k
+ generic-logos-httpd   noarch   18.0.0-12.amzn2023.0.3      amazonlinux    19 k
+ httpd-core            x86_64   2.4.65-1.amzn2023.0.1       amazonlinux   1.4 M
+ httpd-filesystem      noarch   2.4.65-1.amzn2023.0.1       amazonlinux    13 k
+ httpd-tools           x86_64   2.4.65-1.amzn2023.0.1       amazonlinux    81 k
+ libbrotli             x86_64   1.0.9-4.amzn2023.0.2        amazonlinux   315 k
+ mailcap               noarch   2.1.49-3.amzn2023.0.3       amazonlinux    33 k
+Installing weak dependencies:
+ apr-util-openssl      x86_64   1.6.3-1.amzn2023.0.1        amazonlinux    17 k
+ mod_http2             x86_64   2.0.27-1.amzn2023.0.3       amazonlinux   166 k
+ mod_lua               x86_64   2.4.65-1.amzn2023.0.1       amazonlinux    60 k
+
+Transaction Summary
+================================================================================
+Install  12 Packages
+
+Total download size: 2.3 M
+Installed size: 6.9 M
+Downloading Packages:
+(1/12): apr-util-openssl-1.6.3-1.amzn2023.0.1.x 489 kB/s |  17 kB     00:00
+(2/12): apr-util-1.6.3-1.amzn2023.0.1.x86_64.rp 2.4 MB/s |  98 kB     00:00
+(3/12): apr-1.7.5-1.amzn2023.0.4.x86_64.rpm     2.9 MB/s | 129 kB     00:00
+(4/12): generic-logos-httpd-18.0.0-12.amzn2023. 908 kB/s |  19 kB     00:00
+(5/12): httpd-filesystem-2.4.65-1.amzn2023.0.1. 681 kB/s |  13 kB     00:00
+(6/12): httpd-core-2.4.65-1.amzn2023.0.1.x86_64  33 MB/s | 1.4 MB     00:00
+(7/12): httpd-tools-2.4.65-1.amzn2023.0.1.x86_6 3.2 MB/s |  81 kB     00:00
+(8/12): libbrotli-1.0.9-4.amzn2023.0.2.x86_64.r 9.2 MB/s | 315 kB     00:00
+(9/12): mailcap-2.1.49-3.amzn2023.0.3.noarch.rp 1.5 MB/s |  33 kB     00:00
+(10/12): httpd-2.4.65-1.amzn2023.0.1.x86_64.rpm 449 kB/s |  47 kB     00:00
+(11/12): mod_http2-2.0.27-1.amzn2023.0.3.x86_64 6.3 MB/s | 166 kB     00:00
+(12/12): mod_lua-2.4.65-1.amzn2023.0.1.x86_64.r 2.3 MB/s |  60 kB     00:00
+--------------------------------------------------------------------------------
+Total                                            13 MB/s | 2.3 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Installing       : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12
+  Installing       : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64          2/12
+  Installing       : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  3/12
+  Installing       : mailcap-2.1.49-3.amzn2023.0.3.noarch                  4/12
+  Installing       : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              5/12
+  Installing       : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                 6/12
+  Running scriptlet: httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Installing       : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Installing       : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               8/12
+  Installing       : mod_http2-2.0.27-1.amzn2023.0.3.x86_64                9/12
+  Installing       : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                 10/12
+  Installing       : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch    11/12
+  Installing       : httpd-2.4.65-1.amzn2023.0.1.x86_64                   12/12
+  Running scriptlet: httpd-2.4.65-1.amzn2023.0.1.x86_64                   12/12
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  2/12
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64          3/12
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch     4/12
+  Verifying        : httpd-2.4.65-1.amzn2023.0.1.x86_64                    5/12
+  Verifying        : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               6/12
+  Verifying        : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Verifying        : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              8/12
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                 9/12
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch                 10/12
+  Verifying        : mod_http2-2.0.27-1.amzn2023.0.3.x86_64               11/12
+  Verifying        : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                 12/12
+
+Installed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64
+  apr-util-1.6.3-1.amzn2023.0.1.x86_64
+  apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64
+  generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch
+  httpd-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-core-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch
+  httpd-tools-2.4.65-1.amzn2023.0.1.x86_64
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64
+  mailcap-2.1.49-3.amzn2023.0.3.noarch
+  mod_http2-2.0.27-1.amzn2023.0.3.x86_64
+  mod_lua-2.4.65-1.amzn2023.0.1.x86_64
+
+Complete!================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.9.20251014:
+    Run the following command to upgrade to 2023.9.20251014:
+
+      dnf upgrade --releasever=2023.9.20251014
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251014.html
+
+================================================================================
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node2 | CHANGED | rc=0 >>
+Amazon Linux 2023 Kernel Livepatch repository   238 kB/s |  26 kB     00:00
+Dependencies resolved.
+================================================================================
+ Package               Arch     Version                     Repository     Size
+================================================================================
+Installing:
+ httpd                 x86_64   2.4.65-1.amzn2023.0.1       amazonlinux    47 k
+Installing dependencies:
+ apr                   x86_64   1.7.5-1.amzn2023.0.4        amazonlinux   129 k
+ apr-util              x86_64   1.6.3-1.amzn2023.0.1        amazonlinux    98 k
+ generic-logos-httpd   noarch   18.0.0-12.amzn2023.0.3      amazonlinux    19 k
+ httpd-core            x86_64   2.4.65-1.amzn2023.0.1       amazonlinux   1.4 M
+ httpd-filesystem      noarch   2.4.65-1.amzn2023.0.1       amazonlinux    13 k
+ httpd-tools           x86_64   2.4.65-1.amzn2023.0.1       amazonlinux    81 k
+ libbrotli             x86_64   1.0.9-4.amzn2023.0.2        amazonlinux   315 k
+ mailcap               noarch   2.1.49-3.amzn2023.0.3       amazonlinux    33 k
+Installing weak dependencies:
+ apr-util-openssl      x86_64   1.6.3-1.amzn2023.0.1        amazonlinux    17 k
+ mod_http2             x86_64   2.0.27-1.amzn2023.0.3       amazonlinux   166 k
+ mod_lua               x86_64   2.4.65-1.amzn2023.0.1       amazonlinux    60 k
+
+Transaction Summary
+================================================================================
+Install  12 Packages
+
+Total download size: 2.3 M
+Installed size: 6.9 M
+Downloading Packages:
+(1/12): apr-util-openssl-1.6.3-1.amzn2023.0.1.x 501 kB/s |  17 kB     00:00
+(2/12): apr-1.7.5-1.amzn2023.0.4.x86_64.rpm     2.9 MB/s | 129 kB     00:00
+(3/12): generic-logos-httpd-18.0.0-12.amzn2023. 884 kB/s |  19 kB     00:00
+(4/12): httpd-2.4.65-1.amzn2023.0.1.x86_64.rpm  2.1 MB/s |  47 kB     00:00
+(5/12): apr-util-1.6.3-1.amzn2023.0.1.x86_64.rp 1.4 MB/s |  98 kB     00:00
+(6/12): httpd-filesystem-2.4.65-1.amzn2023.0.1. 742 kB/s |  13 kB     00:00
+(7/12): httpd-core-2.4.65-1.amzn2023.0.1.x86_64  32 MB/s | 1.4 MB     00:00
+(8/12): httpd-tools-2.4.65-1.amzn2023.0.1.x86_6 2.4 MB/s |  81 kB     00:00
+(9/12): libbrotli-1.0.9-4.amzn2023.0.2.x86_64.r  10 MB/s | 315 kB     00:00
+(10/12): mailcap-2.1.49-3.amzn2023.0.3.noarch.r 1.5 MB/s |  33 kB     00:00
+(11/12): mod_http2-2.0.27-1.amzn2023.0.3.x86_64 7.2 MB/s | 166 kB     00:00
+(12/12): mod_lua-2.4.65-1.amzn2023.0.1.x86_64.r 2.9 MB/s |  60 kB     00:00
+--------------------------------------------------------------------------------
+Total                                            14 MB/s | 2.3 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Installing       : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12
+  Installing       : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64          2/12
+  Installing       : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  3/12
+  Installing       : mailcap-2.1.49-3.amzn2023.0.3.noarch                  4/12
+  Installing       : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              5/12
+  Installing       : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                 6/12
+  Running scriptlet: httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Installing       : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Installing       : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               8/12
+  Installing       : mod_http2-2.0.27-1.amzn2023.0.3.x86_64                9/12
+  Installing       : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                 10/12
+  Installing       : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch    11/12
+  Installing       : httpd-2.4.65-1.amzn2023.0.1.x86_64                   12/12
+  Running scriptlet: httpd-2.4.65-1.amzn2023.0.1.x86_64                   12/12
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  2/12
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64          3/12
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch     4/12
+  Verifying        : httpd-2.4.65-1.amzn2023.0.1.x86_64                    5/12
+  Verifying        : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               6/12
+  Verifying        : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Verifying        : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              8/12
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                 9/12
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch                 10/12
+  Verifying        : mod_http2-2.0.27-1.amzn2023.0.3.x86_64               11/12
+  Verifying        : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                 12/12
+
+Installed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64
+  apr-util-1.6.3-1.amzn2023.0.1.x86_64
+  apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64
+  generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch
+  httpd-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-core-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch
+  httpd-tools-2.4.65-1.amzn2023.0.1.x86_64
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64
+  mailcap-2.1.49-3.amzn2023.0.3.noarch
+  mod_http2-2.0.27-1.amzn2023.0.3.x86_64
+  mod_lua-2.4.65-1.amzn2023.0.1.x86_64
+
+Complete!================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.9.20251014:
+    Run the following command to upgrade to 2023.9.20251014:
+
+      dnf upgrade --releasever=2023.9.20251014
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251014.html
+
+================================================================================
+[ec2-user@ip-172-31-33-111 ansible_project]$ ansible webservers -ba "yum remove httpd -y "
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node1 | CHANGED | rc=0 >>
+Dependencies resolved.
+================================================================================
+ Package               Arch     Version                    Repository      Size
+================================================================================
+Removing:
+ httpd                 x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux    60 k
+Removing unused dependencies:
+ apr                   x86_64   1.7.5-1.amzn2023.0.4       @amazonlinux   299 k
+ apr-util              x86_64   1.6.3-1.amzn2023.0.1       @amazonlinux   217 k
+ apr-util-openssl      x86_64   1.6.3-1.amzn2023.0.1       @amazonlinux    24 k
+ generic-logos-httpd   noarch   18.0.0-12.amzn2023.0.3     @amazonlinux    21 k
+ httpd-core            x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux   4.7 M
+ httpd-filesystem      noarch   2.4.65-1.amzn2023.0.1      @amazonlinux   464
+ httpd-tools           x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux   198 k
+ libbrotli             x86_64   1.0.9-4.amzn2023.0.2       @amazonlinux   771 k
+ mailcap               noarch   2.1.49-3.amzn2023.0.3      @amazonlinux    78 k
+ mod_http2             x86_64   2.0.27-1.amzn2023.0.3      @amazonlinux   444 k
+ mod_lua               x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux   142 k
+
+Transaction Summary
+================================================================================
+Remove  12 Packages
+
+Freed space: 6.9 M
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Running scriptlet: httpd-2.4.65-1.amzn2023.0.1.x86_64                    1/12
+  Erasing          : httpd-2.4.65-1.amzn2023.0.1.x86_64                    1/12
+  Running scriptlet: httpd-2.4.65-1.amzn2023.0.1.x86_64                    1/12
+  Erasing          : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                  2/12
+  Erasing          : mod_http2-2.0.27-1.amzn2023.0.3.x86_64                3/12
+  Erasing          : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch     4/12
+  Erasing          : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               5/12
+  Erasing          : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              6/12
+  Erasing          : mailcap-2.1.49-3.amzn2023.0.3.noarch                  7/12
+  Erasing          : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         8/12
+  Erasing          : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  9/12
+  Erasing          : apr-1.7.5-1.amzn2023.0.4.x86_64                      10/12
+  Erasing          : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64         11/12
+  Erasing          : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                12/12
+  Running scriptlet: libbrotli-1.0.9-4.amzn2023.0.2.x86_64                12/12
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  2/12
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64          3/12
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch     4/12
+  Verifying        : httpd-2.4.65-1.amzn2023.0.1.x86_64                    5/12
+  Verifying        : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               6/12
+  Verifying        : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Verifying        : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              8/12
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                 9/12
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch                 10/12
+  Verifying        : mod_http2-2.0.27-1.amzn2023.0.3.x86_64               11/12
+  Verifying        : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                 12/12
+
+Removed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64
+  apr-util-1.6.3-1.amzn2023.0.1.x86_64
+  apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64
+  generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch
+  httpd-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-core-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch
+  httpd-tools-2.4.65-1.amzn2023.0.1.x86_64
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64
+  mailcap-2.1.49-3.amzn2023.0.3.noarch
+  mod_http2-2.0.27-1.amzn2023.0.3.x86_64
+  mod_lua-2.4.65-1.amzn2023.0.1.x86_64
+
+Complete!================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.9.20251014:
+    Run the following command to upgrade to 2023.9.20251014:
+
+      dnf upgrade --releasever=2023.9.20251014
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251014.html
+
+================================================================================
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+node2 | CHANGED | rc=0 >>
+Dependencies resolved.
+================================================================================
+ Package               Arch     Version                    Repository      Size
+================================================================================
+Removing:
+ httpd                 x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux    60 k
+Removing unused dependencies:
+ apr                   x86_64   1.7.5-1.amzn2023.0.4       @amazonlinux   299 k
+ apr-util              x86_64   1.6.3-1.amzn2023.0.1       @amazonlinux   217 k
+ apr-util-openssl      x86_64   1.6.3-1.amzn2023.0.1       @amazonlinux    24 k
+ generic-logos-httpd   noarch   18.0.0-12.amzn2023.0.3     @amazonlinux    21 k
+ httpd-core            x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux   4.7 M
+ httpd-filesystem      noarch   2.4.65-1.amzn2023.0.1      @amazonlinux   464
+ httpd-tools           x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux   198 k
+ libbrotli             x86_64   1.0.9-4.amzn2023.0.2       @amazonlinux   771 k
+ mailcap               noarch   2.1.49-3.amzn2023.0.3      @amazonlinux    78 k
+ mod_http2             x86_64   2.0.27-1.amzn2023.0.3      @amazonlinux   444 k
+ mod_lua               x86_64   2.4.65-1.amzn2023.0.1      @amazonlinux   142 k
+
+Transaction Summary
+================================================================================
+Remove  12 Packages
+
+Freed space: 6.9 M
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Running scriptlet: httpd-2.4.65-1.amzn2023.0.1.x86_64                    1/12
+  Erasing          : httpd-2.4.65-1.amzn2023.0.1.x86_64                    1/12
+  Running scriptlet: httpd-2.4.65-1.amzn2023.0.1.x86_64                    1/12
+  Erasing          : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                  2/12
+  Erasing          : mod_http2-2.0.27-1.amzn2023.0.3.x86_64                3/12
+  Erasing          : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch     4/12
+  Erasing          : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               5/12
+  Erasing          : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              6/12
+  Erasing          : mailcap-2.1.49-3.amzn2023.0.3.noarch                  7/12
+  Erasing          : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         8/12
+  Erasing          : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  9/12
+  Erasing          : apr-1.7.5-1.amzn2023.0.4.x86_64                      10/12
+  Erasing          : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64         11/12
+  Erasing          : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                12/12
+  Running scriptlet: libbrotli-1.0.9-4.amzn2023.0.2.x86_64                12/12
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                       1/12
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.1.x86_64                  2/12
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64          3/12
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch     4/12
+  Verifying        : httpd-2.4.65-1.amzn2023.0.1.x86_64                    5/12
+  Verifying        : httpd-core-2.4.65-1.amzn2023.0.1.x86_64               6/12
+  Verifying        : httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch         7/12
+  Verifying        : httpd-tools-2.4.65-1.amzn2023.0.1.x86_64              8/12
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                 9/12
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch                 10/12
+  Verifying        : mod_http2-2.0.27-1.amzn2023.0.3.x86_64               11/12
+  Verifying        : mod_lua-2.4.65-1.amzn2023.0.1.x86_64                 12/12
+
+Removed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64
+  apr-util-1.6.3-1.amzn2023.0.1.x86_64
+  apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64
+  generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch
+  httpd-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-core-2.4.65-1.amzn2023.0.1.x86_64
+  httpd-filesystem-2.4.65-1.amzn2023.0.1.noarch
+  httpd-tools-2.4.65-1.amzn2023.0.1.x86_64
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64
+  mailcap-2.1.49-3.amzn2023.0.3.noarch
+  mod_http2-2.0.27-1.amzn2023.0.3.x86_64
+  mod_lua-2.4.65-1.amzn2023.0.1.x86_64
+
+Complete!================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.9.20251014:
+    Run the following command to upgrade to 2023.9.20251014:
+
+      dnf upgrade --releasever=2023.9.20251014
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251014.html
+
+================================================================================
+[ec2-user@ip-172-31-33-111 ansible_project]$
