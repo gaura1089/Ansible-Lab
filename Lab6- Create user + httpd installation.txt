@@ -1,0 +1,403 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\Gaurav.26> cd .\Downloads\
+PS C:\Users\Gaurav.26\Downloads> .\Ansible-Lab\
+.\Ansible-Lab\ : The term '.\Ansible-Lab\' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of
+the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ .\Ansible-Lab\
++ ~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (.\Ansible-Lab\:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\Gaurav.26\Downloads> cd .\Ansible-Lab\
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ls
+
+
+    Directory: C:\Users\Gaurav.26\Downloads\Ansible-Lab
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        16-10-2025     04:16           1076 Ansible-Server.tf
+-a----        18-10-2025     05:46             63 ansible.cfg
+-a----        18-10-2025     05:46            504 apache.yml
+-a----        18-10-2025     05:58           1650 Commands IMP.txt
+-a----        18-10-2025     05:46            114 gaurav.yml
+-a----        17-10-2025     06:12           2059 How to create hash password for linux compatible.txt
+-a----        18-10-2025     05:46           2459 id_rsa.pem
+-a----        16-10-2025     15:24          44767 Lab1-AD-hoc commands to connect the nodes and executed the some commands..txt
+-a----        16-10-2025     15:25           1972 Lab1-Used Commands.txt
+-a----        17-10-2025     01:44          14675 Lab2- Creation of webserver by Modules commands on nodes.txt
+-a----        17-10-2025     01:45           1480 Lab2-Used commands.txt
+-a----        17-10-2025     02:19           4390 Lab3-Creating users via modules on nodes.txt
+-a----        17-10-2025     02:19              0 Lab3-Used Commands.txt
+-a----        18-10-2025     05:00           8829 Lab4- Creation of webserver using playbook.txt
+-a----        18-10-2025     05:19           3661 Lab5- Remove httpd.txt
+-a----        18-10-2025     05:46            123 myhosts.ini
+-a----        18-10-2025     05:46            197 removeapache.yml
+-a----        18-10-2025     05:46            282 user.yml
+
+
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab>
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ssh -i .\id_rsa.pem ec2-user@13.127.203.108
+The authenticity of host '13.127.203.108 (13.127.203.108)' can't be established.
+ED25519 key fingerprint is SHA256:/sTND+aC00tisc1GK2/o5wzNSc8yzEonP0Djg3jP9P0.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.127.203.108' (ED25519) to the list of known hosts.
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-41-136 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-41-136 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-41-136 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-41-136 ansible_project]$ cat myhosts.ini
+[webservers]
+node1 ansible_host=172.31.44.16 ansible_user=ec2-user
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi myhosts.ini
+[ec2-user@ip-172-31-41-136 ansible_project]$ cd ..
+[ec2-user@ip-172-31-41-136 ~]$ ls
+ansible_project  id_rsa.pem
+[ec2-user@ip-172-31-41-136 ~]$ mv id_rsa.pem ansible_project/
+[ec2-user@ip-172-31-41-136 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-41-136 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-41-136 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-41-136 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@43.205.130.163 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_
+keys"
+The authenticity of host '43.205.130.163 (43.205.130.163)' can't be established.
+ED25519 key fingerprint is SHA256:eAa7454W3dlmXnduI3rRzQ9w8RubpiGtEOkMoLpHaRk.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '43.205.130.163' (ED25519) to the list of known hosts.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for 'id_rsa.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "id_rsa.pem": bad permissions
+ec2-user@43.205.130.163: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+[ec2-user@ip-172-31-41-136 ansible_project]$ chmod 700 id_rsa.pem
+[ec2-user@ip-172-31-41-136 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@43.205.130.163 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+[ec2-user@ip-172-31-41-136 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@3.110.169.197 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_k
+eys"
+The authenticity of host '3.110.169.197 (3.110.169.197)' can't be established.
+ED25519 key fingerprint is SHA256:EkvpoTvSC3BOy1ZNWUXQ559dIOWu7BcnF7l6EzXvSjQ.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.110.169.197' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible webservers --list-hosts
+  hosts (2):
+    node1
+    node2
+[ec2-user@ip-172-31-41-136 ansible_project]$ touch task.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi task.yml
+"task.yml" 6L, 91B written
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook task.yml
+
+PLAY [myfile] **********************************************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node2                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-41-136 ansible_project]$ cat task.yml
+---
+- name: myfile
+  hosts: webservers
+  user: ec2-user
+  become: yes
+  gather_facts: yes
+[ec2-user@ip-172-31-41-136 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini  task.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ touch apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+[WARNING]: While constructing a mapping from /home/ec2-user/ansible_project/apache.yml, line 3, column 3, found a duplicate dict key (tasks). Using last
+defined value only.
+ERROR! this task 'copy' has extra params, which is only allowed in the following modules: ansible.legacy.import_role, ansible.legacy.meta, ansible.legacy.win_command, ansible.legacy.include, ansible.builtin.import_role, raw, ansible.legacy.script, ansible.windows.win_command, include_tasks, ansible.builtin.include_tasks, ansible.builtin.group_by, script, ansible.legacy.win_shell, win_command, set_fact, ansible.legacy.shell, ansible.legacy.raw, ansible.builtin.script, command, group_by, ansible.builtin.import_tasks, ansible.builtin.raw, ansible.builtin.win_command, ansible.builtin.include_vars, ansible.windows.win_shell, ansible.legacy.command, include, shell, ansible.builtin.shell, ansible.builtin.set_fact, include_role, ansible.legacy.add_host, import_role, ansible.builtin.win_shell, ansible.legacy.include_vars, ansible.builtin.add_host, add_host, win_shell, ansible.legacy.import_tasks, ansible.builtin.meta, ansible.builtin.command, import_tasks, ansible.legacy.include_tasks, include_vars, ansible.legacy.set_fact, ansible.legacy.include_role, ansible.legacy.group_by, meta, ansible.builtin.include_role, ansible.builtin.include
+
+The error appears to be in '/home/ec2-user/ansible_project/apache.yml': line 20, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+    - name: create html file
+      ^ here
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+"apache.yml" 23L, 380B written
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/ec2-user/ansible_project/apache.yml': line 21, column 13, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+   - name: create html file
+      action: copy dest=/var/www/html/index.html content=</h1> hare krishna hare krishna </h1>
+            ^ here
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+[WARNING]: While constructing a mapping from /home/ec2-user/ansible_project/apache.yml, line 3, column 3, found a duplicate dict key (tasks). Using last
+defined value only.
+ERROR! this task 'copy' has extra params, which is only allowed in the following modules: win_command, win_shell, set_fact, ansible.builtin.include_tasks, ansible.builtin.script, include_vars, group_by, ansible.builtin.win_command, ansible.builtin.import_tasks, ansible.builtin.raw, ansible.legacy.set_fact, ansible.legacy.win_command, command, ansible.windows.win_command, ansible.legacy.include, include, ansible.builtin.add_host, shell, raw, ansible.legacy.script,ansible.builtin.group_by, ansible.builtin.import_role, add_host, ansible.legacy.command, script, ansible.legacy.import_role, import_role, ansible.windows.win_shell, ansible.legacy.import_tasks, ansible.legacy.add_host, ansible.legacy.meta, ansible.builtin.command, ansible.builtin.include, ansible.builtin.win_shell, ansible.legacy.include_vars, ansible.legacy.group_by, ansible.legacy.include_tasks, ansible.builtin.include_role, import_tasks, ansible.legacy.win_shell, meta, ansible.builtin.meta, ansible.builtin.shell, include_role, ansible.legacy.shell, ansible.legacy.raw, ansible.legacy.include_role, include_tasks, ansible.builtin.set_fact, ansible.builtin.include_vars
+
+The error appears to be in '/home/ec2-user/ansible_project/apache.yml': line 20, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: create html file
+     ^ here
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+[WARNING]: While constructing a mapping from /home/ec2-user/ansible_project/apache.yml, line 3, column 3, found a duplicate dict key (tasks). Using last
+defined value only.
+ERROR! this task 'copy' has extra params, which is only allowed in the following modules: ansible.legacy.meta, ansible.legacy.include_vars, shell, include_role, ansible.legacy.import_role, meta, group_by, ansible.builtin.add_host, ansible.builtin.import_tasks, ansible.legacy.raw, set_fact, ansible.legacy.include_tasks, ansible.legacy.group_by, ansible.builtin.set_fact, import_tasks, ansible.legacy.command, ansible.builtin.win_command, ansible.builtin.command, ansible.builtin.include_vars, ansible.legacy.shell, ansible.windows.win_shell, ansible.builtin.group_by, include, ansible.legacy.import_tasks, ansible.legacy.include_role, ansible.legacy.win_command, ansible.legacy.set_fact, include_tasks, ansible.windows.win_command, ansible.legacy.add_host, script, ansible.builtin.include, ansible.builtin.shell, import_role, ansible.legacy.win_shell, win_shell, ansible.builtin.meta, ansible.legacy.include, include_vars, ansible.builtin.import_role, ansible.builtin.script, win_command, ansible.builtin.win_shell, command, ansible.builtin.include_tasks, add_host, ansible.builtin.raw, raw, ansible.builtin.include_role, ansible.legacy.script
+
+The error appears to be in '/home/ec2-user/ansible_project/apache.yml': line 20, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: create html file
+     ^ here
+[ec2-user@ip-172-31-41-136 ansible_project]$ cat apache.yml
+---
+
+- name: target
+  hosts: webserves
+  user: ec2-user
+
+
+  tasks:
+
+   - name: install httpd server
+     action: yum name=httpd state=present
+
+  tasks:
+
+   - name: run and enable the httpd
+     action: service name=httpd state=started
+
+  tasks:
+
+   - name: create html file
+     action: copy dest=/var/www/html/index.html content= "</h1> hare krishna hare krishna </h1>"
+
+
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+ERROR! this task 'copy' has extra params, which is only allowed in the following modules: ansible.legacy.add_host, ansible.builtin.include, ansible.builtin.include_tasks, ansible.legacy.shell, ansible.builtin.script, ansible.legacy.win_shell, group_by, ansible.legacy.raw, ansible.builtin.set_fact, ansible.builtin.win_shell, ansible.legacy.win_command, win_command, import_tasks, ansible.windows.win_command, ansible.legacy.set_fact, ansible.builtin.import_tasks, shell, ansible.builtin.shell, ansible.builtin.win_command, ansible.legacy.import_tasks, include_role, ansible.builtin.group_by, include, ansible.legacy.import_role, ansible.legacy.include_tasks, ansible.builtin.include_vars, meta, raw, ansible.legacy.include, include_tasks, ansible.legacy.meta, ansible.legacy.group_by, ansible.windows.win_shell, ansible.builtin.import_role, ansible.builtin.include_role, ansible.legacy.script, ansible.legacy.command, ansible.builtin.raw, command, ansible.builtin.command, win_shell, set_fact, import_role, ansible.legacy.include_role, include_vars, script, ansible.builtin.meta, ansible.legacy.include_vars, ansible.builtin.add_host, add_host
+
+The error appears to be in '/home/ec2-user/ansible_project/apache.yml': line 20, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: create html file
+     ^ here
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+[WARNING]: Could not match supplied host pattern, ignoring: webserves
+
+PLAY [target] **********************************************************************************************************************************************
+skipping: no hosts matched
+
+PLAY RECAP *************************************************************************************************************************************************
+
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible all -list-hosts
+[WARNING]: Could not match supplied host pattern, ignoring: ist-hosts
+ERROR! Specified inventory, host pattern and/or --limit leaves us with no hosts to target.
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible all --list-hosts
+  hosts (2):
+    node1
+    node2
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+[WARNING]: Could not match supplied host pattern, ignoring: webserves
+
+PLAY [target] **********************************************************************************************************************************************
+skipping: no hosts matched
+
+PLAY RECAP *************************************************************************************************************************************************
+
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook apache.yml
+
+PLAY [target] **********************************************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [install httpd server] ********************************************************************************************************************************
+changed: [node2]
+changed: [node1]
+
+TASK [run and enable the httpd] ****************************************************************************************************************************
+changed: [node2]
+changed: [node1]
+
+TASK [create html file] ************************************************************************************************************************************
+changed: [node2]
+changed: [node1]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node2                      : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-41-136 ansible_project]$ ls
+ansible.cfg  apache.yml  id_rsa.pem  myhosts.ini  task.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ touch user.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi user.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ mkpasswd --method=SHA-512 --salt=FixedSalt123 Gu@102831
+-bash: mkpasswd: command not found
+[ec2-user@ip-172-31-41-136 ansible_project]$ sudo yum install mkpasswd
+Last metadata expiration check: 0:58:44 ago on Sat Oct 18 14:54:54 2025.
+Dependencies resolved.
+============================================================================================================================================================
+ Package                           Architecture                   Version                                         Repository                           Size
+============================================================================================================================================================
+Installing:
+ mkpasswd                          x86_64                         5.5.10-1.amzn2023.0.2                           amazonlinux                          41 k
+Installing dependencies:
+ whois-nls                         noarch                         5.5.10-1.amzn2023.0.2                           amazonlinux                          34 k
+
+Transaction Summary
+============================================================================================================================================================
+Install  2 Packages
+
+Total download size: 74 k
+Installed size: 216 k
+Is this ok [y/N]: y
+Downloading Packages:
+(1/2): whois-nls-5.5.10-1.amzn2023.0.2.noarch.rpm                                                                           771 kB/s |  34 kB     00:00
+(2/2): mkpasswd-5.5.10-1.amzn2023.0.2.x86_64.rpm                                                                            878 kB/s |  41 kB     00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                       945 kB/s |  74 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                    1/1
+  Installing       : whois-nls-5.5.10-1.amzn2023.0.2.noarch                                                                                             1/2
+  Installing       : mkpasswd-5.5.10-1.amzn2023.0.2.x86_64                                                                                              2/2
+  Running scriptlet: mkpasswd-5.5.10-1.amzn2023.0.2.x86_64                                                                                              2/2
+  Verifying        : mkpasswd-5.5.10-1.amzn2023.0.2.x86_64                                                                                              1/2
+  Verifying        : whois-nls-5.5.10-1.amzn2023.0.2.noarch                                                                                             2/2
+============================================================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.9.20251014:
+    Run the following command to upgrade to 2023.9.20251014:
+
+      dnf upgrade --releasever=2023.9.20251014
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251014.html
+
+============================================================================================================================================================
+
+Installed:
+  mkpasswd-5.5.10-1.amzn2023.0.2.x86_64                                        whois-nls-5.5.10-1.amzn2023.0.2.noarch
+
+Complete!
+[ec2-user@ip-172-31-41-136 ansible_project]$ mkpasswd --method=SHA-512 --salt=FixedSalt123 Gu@102831
+$6$FixedSalt123$JdBrMinCJ8QqTQTTmvEiuydzhS6mF30w64HoY/XRnFtc/VFYjtuYIRjdeFPV1xxAFeIQkdVyJDcbGCJesKTn6.
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi user.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook user.yml
+
+PLAY [webservers] ******************************************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [create user] *****************************************************************************************************************************************
+fatal: [node2]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (user) module: passwd. Supported parameters include: append, authorization, comment, create_home, expires, force, generate_ssh_key, group, groups, hidden, home, local, login_class, move_home, name, non_unique, password, password_expire_max, password_expire_min, password_lock, profile, remove, role, seuser, shell, skeleton, ssh_key_bits, ssh_key_comment, ssh_key_file, ssh_key_passphrase, ssh_key_type, state, system, uid, umask, update_password (createhome, user)."}
+fatal: [node1]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (user) module: passwd. Supported parameters include: append, authorization, comment, create_home, expires, force, generate_ssh_key, group, groups, hidden, home, local, login_class, move_home, name, non_unique, password, password_expire_max, password_expire_min, password_lock, profile, remove, role, seuser, shell, skeleton, ssh_key_bits, ssh_key_comment, ssh_key_file, ssh_key_passphrase, ssh_key_type, state, system, uid, umask, update_password (createhome, user)."}
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+node2                      : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-41-136 ansible_project]$ vi user.yml
+[ec2-user@ip-172-31-41-136 ansible_project]$ ansible-playbook user.yml
+
+PLAY [webservers] ******************************************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [create user] *****************************************************************************************************************************************
+changed: [node2]
+changed: [node1]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-41-136 ansible_project]$
