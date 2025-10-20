@@ -1,0 +1,26 @@
+--- # create directory
+
+- name: target
+  user: ec2-user
+  hosts: webservers
+  become: yes
+
+
+  tasks: 
+  
+    - name: create folder
+      file: 
+         path: /etc/fol1
+         state: directory
+         owner: ec2-user
+         mode: 0777
+
+    - name: create file
+      copy: 
+        dest: /etc/fol1/myfile
+        content: "my name is gaurav"
+        owner: ec2-user
+        mode: 0777
+
+
+

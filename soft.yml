@@ -1,0 +1,30 @@
+--- # install software
+
+- name: target
+  user: ec2-user
+  become: yes
+  hosts: webservers
+
+
+  vars: 
+     
+     pkgname: docker
+
+
+  tasks: 
+     
+     - name: install docker 
+       yum:
+         name: "{{pkgname}}"
+         state: present
+       notify: enabling service
+
+  handlers: 
+   
+   - name: enabling service
+     service: 
+        name: "{{pkgname}}"
+        state: started
+        enabled: yes
+
+

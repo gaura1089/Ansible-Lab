@@ -1,0 +1,180 @@
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Fri Oct 17 22:21:54 2025 from 13.233.177.5
+[ec2-user@ip-172-31-46-207 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-46-207 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-46-207 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi gaurav.yml
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook gaurav.yml
+ERROR! A playbook must be a list of plays, got a <class 'ansible.parsing.yaml.objects.AnsibleMapping'> instead: /home/ec2-user/ansible_project/gaurav.yml
+
+The error appears to be in '/home/ec2-user/ansible_project/gaurav.yml': line 3, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+  -hosts: webservers
+  ^ here
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi gaurav.yml
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook gaurav.yml
+
+PLAY [webservers] **************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node1]
+
+PLAY RECAP *********************************************************************************************************
+node1                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node2                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[ec2-user@ip-172-31-46-207 ansible_project]$ cat gaurav.yml
+--- #my 1st yml book
+
+- hosts: webservers
+  user: ec2-user
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+
+
+[ec2-user@ip-172-31-46-207 ansible_project]$ ls
+ansible.cfg  gaurav.yml  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-46-207 ansible_project]$ ls
+ansible.cfg  apache.yml  gaurav.yml  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook apache.yml
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/home/ec2-user/ansible_project/apache.yml': line 10, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    -name: install httpd
+     yum:
+        ^ here
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook apache.yml
+ERROR! 'taks' is not a valid attribute for a Play
+
+The error appears to be in '/home/ec2-user/ansible_project/apache.yml': line 3, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Apache server installation
+  ^ here
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi apache.yml
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook apache.yml
+
+PLAY [Apache server installation] **********************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node1]
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node2]
+
+TASK [install httpd] ***********************************************************************************************
+changed: [node1]
+changed: [node2]
+
+TASK [start service httpd] *****************************************************************************************
+fatal: [node2]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (ansible.legacy.systemd) module: enable. Supported parameters include: daemon_reexec, daemon_reload, enabled, force, masked, name, no_block, scope, state (daemon-reexec, daemon-reload, service, unit)."}
+fatal: [node1]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (ansible.legacy.systemd) module: enable. Supported parameters include: daemon_reexec, daemon_reload, enabled, force, masked, name, no_block, scope, state (daemon-reexec, daemon-reload, service, unit)."}
+
+PLAY RECAP *********************************************************************************************************
+node1                      : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+node2                      : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi apache.yml 
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi apache.yml 
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook apache.yml
+
+PLAY [Apache server installation] **********************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node1]
+
+TASK [install httpd] ***********************************************************************************************
+ok: [node1]
+ok: [node2]
+
+TASK [start service httpd] *****************************************************************************************
+changed: [node2]
+changed: [node1]
+
+TASK [create index.html file here] *********************************************************************************
+changed: [node2]
+changed: [node1]
+
+PLAY RECAP *********************************************************************************************************
+node1                      : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node2                      : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[ec2-user@ip-172-31-46-207 ansible_project]$ cat apache.yml
+---
+
+- name: Apache server installation
+  hosts: webservers
+  user: ec2-user
+  become: yes
+
+  tasks:
+   - name: install httpd
+     yum:
+       name: httpd
+       state: present
+
+   - name: start service httpd
+     service:
+       name: httpd
+       state: started
+       enabled: yes
+
+   - name: create index.html file here
+     copy:
+       dest: /var/www/html/index.html
+       content: "<h1> Hare Krishna Hare Krishna Krishna Krishna Hare Hare, Hare Rama Hare Rama Rama Rama Hare Hare </h1>"
+
+       
+[ec2-user@ip-172-31-46-207 ansible_project]$ 

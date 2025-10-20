@@ -1,0 +1,22 @@
+--- # create user in loop
+
+- name: target group
+  user: ec2-user
+  hosts: webservers
+  become: yes
+
+
+  tasks: 
+   
+   - name: add a lsit of user
+     user: 
+       name: "{{ item }}"
+       state: present
+       create_home: yes
+       password: "$6$FixedSalt123$JdBrMinCJ8QqTQTTmvEiuydzhS6mF30w64HoY/XRnFtc/VFYjtuYIRjdeFPV1xxAFeIQkdVyJDcbGCJesKTn6."
+
+     loop:
+        - gaurav
+        - amit
+        - deepak
+        - rahul 

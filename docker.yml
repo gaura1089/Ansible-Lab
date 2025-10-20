@@ -1,0 +1,22 @@
+---
+
+- name: target
+  hosts: webservers
+  user: ec2-user
+  become: yes
+
+  tasks:
+
+   - name: install docker server
+     yum:
+       name: docker 
+       state: present
+
+   - name: run docker service
+     service:
+        name:  docker
+        enabled: yes
+        state: started
+
+
+  

@@ -1,0 +1,80 @@
+[ec2-user@ip-172-31-46-207 ansible_project]$ cat removeapache.yml
+---
+
+
+- name: remove apache
+  hosts: webservers
+  user: ec2-user
+  become: yes
+
+
+  tasks:
+    - name: remove httpd
+      yum:
+        name: httpd
+        state: absent
+
+   
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook removeapache.yml
+
+PLAY [remove apache] ***********************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node1]
+
+TASK [remove httpd] ************************************************************************************************
+ok: [node2]
+ok: [node1]
+
+PLAY RECAP *********************************************************************************************************
+node1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node2                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[ec2-user@ip-172-31-46-207 ansible_project]$ ls
+ansible.cfg  apache.yml  gaurav.yml  id_rsa.pem  myhosts.ini  removeapache.yml
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi myhosts.ini
+[ec2-user@ip-172-31-46-207 ansible_project]$ vi removeapache.yml
+[ec2-user@ip-172-31-46-207 ansible_project]$ ansible-playbook removeapache.yml
+
+PLAY [remove apache] ***********************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but
+future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more information.
+ok: [node2]
+fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 172.31.35.228 port 22: No route to host", "unreachable": true}
+
+TASK [remove httpd] ************************************************************************************************
+changed: [node2]
+
+PLAY RECAP *********************************************************************************************************
+node1                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+node2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[ec2-user@ip-172-31-46-207 ansible_project]$ cat removeapache.yml
+---
+
+
+- name: remove apache
+  hosts: webservers
+  user: ec2-user
+  become: yes
+
+
+  tasks:
+    - name: remove httpd
+      yum:
+        name: httpd
+        state: absent
+        autoremove: yes
+
+   
+[ec2-user@ip-172-31-46-207 ansible_project]$ 

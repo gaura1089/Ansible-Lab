@@ -1,0 +1,14 @@
+---
+
+- name: create user in all nodes
+  user: ec2-user
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: create normal user
+      user:
+        name: gaurav
+        passwd: $6$FixedSalt123$JdBrMinCJ8QqTQTTmvEiuydzhS6mF30w64HoY/XRnFtc/VFYjtuYIRjdeFPV1xxAFeIQkdVyJDcbGCJesKTn6.
+        create_home: yes
+        state: present

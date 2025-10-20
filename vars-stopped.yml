@@ -1,0 +1,31 @@
+--- # yml file which uninstall httpd via varibales ans handlers
+
+
+- name: this are target
+  hosts: webservers
+  user: ec2-user
+  become: yes
+
+  vars:
+
+    pkgname: httpd
+
+
+  tasks:
+     
+
+      - name: httpd stopped
+        service:
+         name: "{{ pkgname }}"
+         state: stopped
+         enabled: no
+        notify: stopped httpd now starting to uninstall the httpd
+
+  handlers:      
+
+    - name: stopped httpd now starting to uninstall the httpd
+      yum:
+        name: "{{ pkgname }}"
+        state: absent
+        autoremove: yes
+      

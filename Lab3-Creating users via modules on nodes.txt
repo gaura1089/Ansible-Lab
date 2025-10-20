@@ -1,0 +1,90 @@
+ec2-user@ip-172-31-45-164 ~]$ histroy -c
+-bash: histroy: command not found
+[ec2-user@ip-172-31-45-164 ~]$ cat /dev/null > ~/.bash_history && history -c
+``
+[ec2-user@ip-172-31-45-164 ~]$ ansible all -b -m user -a "name=gaurav password=f2af5c2235993c307218757a2cd6acd3f7c8277739f3ab823ec0774fb42fbd29487ff1fcbdca70e3569fa58cf1daeed116436c1b756be991278f5ec5d07d4dc9 create_home=yes"
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+[ec2-user@ip-172-31-45-164 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-45-164 ansible_project]$ ansible all -b -m user -a "name=gaurav password=f2af5c2235993c307218757a2cd6acd3f7c8277739f3ab823ec0774fb42fbd29487ff1fcbdca70e3569fa58cf1daeed116436c1b756be991278f5ec5d07d4dc9 create_home=yes"
+[WARNING]: The input password appears not to have been hashed. The 'password' argument must be encrypted for this module to work properly.
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for
+more information.
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.9"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1001,
+    "home": "/home/gaurav",
+    "name": "gaurav",
+    "password": "NOT_LOGGING_PASSWORD",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1001
+}
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for
+more information.
+node2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.9"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1001,
+    "home": "/home/gaurav",
+    "name": "gaurav",
+    "password": "NOT_LOGGING_PASSWORD",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1001
+}
+[ec2-user@ip-172-31-45-164 ansible_project]$ openssl passwd -6 'Gu@102831'
+$6$TzS2XYQM5JUVQ1nc$3WWweqhFD8YEL2t0p7XwhXeD.mwjdy2mrjw3V5x5zHZ3hA68CVWpSzglqssgNg1yVuosxC7JAz5klatt.8Igs1
+[ec2-user@ip-172-31-45-164 ansible_project]$ ansible all -b -m user -a "name=amit password=$6$TzS2XYQM5JUVQ1nc$3WWweqhFD8YEL2t0p7XwhXeD.mwjdy2mrjw3V5x5zHZ3hA68CVWpSzglqssgNg1yVuosxC7JAz5klatt.8Igs1 create_home=yes"
+[WARNING]: The input password appears not to have been hashed. The 'password' argument must be encrypted for this module to work properly.
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for
+more information.
+node2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.9"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1002,
+    "home": "/home/amit",
+    "name": "amit",
+    "password": "NOT_LOGGING_PASSWORD",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1002
+}
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for
+more information.
+node1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.9"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1002,
+    "home": "/home/amit",
+    "name": "amit",
+    "password": "NOT_LOGGING_PASSWORD",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1002
+}

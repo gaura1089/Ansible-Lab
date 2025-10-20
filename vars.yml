@@ -1,0 +1,28 @@
+--- # yml file which install httpd via varibales ans handlers
+
+
+- name: this are target
+  hosts: webservers
+  user: ec2-user
+  become: yes
+
+  vars: 
+    
+    pkgname: httpd
+
+
+  tasks:
+     
+    - name: Installation of httpd 
+      yum:
+        name: "{{ pkgname }}"
+        state: present
+      notify: httpd installed
+
+  handlers: 
+     - name: httpd installed
+       service: 
+         name: "{{ pkgname }}"
+         state: started
+         enabled: yes
+

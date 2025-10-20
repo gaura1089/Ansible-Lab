@@ -1,0 +1,10 @@
+--- #my 1st yml book
+
+- hosts: webservers
+  user: ec2-user
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+
+

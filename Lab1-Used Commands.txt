@@ -1,0 +1,52 @@
+================================================================================
+[ec2-user@ip-172-31-33-111 ansible_project]$ history
+    1  ls
+    2  cd ansible_project/
+    3  ansible --verison
+    4  ansible --version
+    5  ls
+    6  cat myhosts.ini
+    7  vi myhosts.ini
+    8  cat ansible.cfg
+    9  cd ..
+   10  ssh-keygen -t rsa
+   11  ls
+   12  ls -a
+   13  ansible all --list-host
+   14  cd ansible_project/
+   15  ansible all --list-host
+   16  cd ..
+   17  cat ~/.ssh/id_rsa.pub | ssh ec2-user@13.201.3.188 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+   18  ssh -i id_rsa.pem ec2-user@13.201.3.188
+   19  chown 600 id_rsa.pem ec2-user
+   20  chown 600 ec2-user id_rsa.pem
+   21  ls -l
+   22  chmod 600 id_rsa.pem
+   23  ls -l
+   24  ssh -i id_rsa.pem ec2-user@13.201.3.188
+   25  cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.201.3.188 && cat >> ~/.ssh/authorized_keys"
+
+
+   26  cp ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.201.3.188 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+   27  cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.201.3.188 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+   28  ssh -i id_rsa.pem ec2-user@13.201.3.188
+   29  ansible webserver -a "ls"
+   30  ls
+   31  cd ansible_project/
+   32  ls
+   33  ansible webserver -a "ls"
+   34  cat myhosts.ini
+   35  ansible webservers -a "ls"
+   36  ansible webservers[0] -a "touch filea"
+   37  ansible webservers[0] -a "mmkdir gaurav"
+   38  ansible webservers[0] -a "mkdir gaurav"
+   39  ansible all -a "mkdir hari"
+   40  cd ..
+   41   cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.232.44.137 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+   42  cd ansible_project/
+   43  ls
+   44  ansible all -a "mkdir hari1"
+   45  ansible webservers -a "yum install httpd -y"
+   46  ansible webservers -a "sudo yum install httpd -y"
+   47  ansible webservers -ba "yum remove httpd -y "
+   48  history
