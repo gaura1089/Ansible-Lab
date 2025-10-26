@@ -1,0 +1,27 @@
+---
+- name: Uninstall Apache server from different OS types
+  hosts: webservers
+  become: yes
+  connection: ssh
+  remote_user: "{{ ansible_user | default('ec2-user') }}"
+
+  tasks:
+    - name: Uninstall httpd from Fedora/Amazon Linux
+      yum:
+        name: httpd
+        state: absent
+      when: ansible_os_family == "RedHat"
+
+    - name: Uninstall apache2 from Ubuntu
+      apt:
+        name: apache2
+        state: absent
+        purge: yes
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Remove index file from /var/www/html
+      file:
+        path: /var/www/html/index.html
+        state: absent
+      when: ansible_os_family in ["RedHat", "Debian"]
