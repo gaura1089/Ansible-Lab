@@ -1,0 +1,1071 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\Gaurav.26> cd .\Downloads\Ansible-Lab\
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ls
+
+
+    Directory: C:\Users\Gaurav.26\Downloads\Ansible-Lab
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        20-10-2025     10:39           1076 Ansible-Server.tf
+-a----        20-10-2025     10:39             63 ansible.cfg
+-a----        20-10-2025     10:39            504 apache.yml
+-a----        20-10-2025     17:43           1754 Commands IMP.txt
+-a----        20-10-2025     17:04            392 directory.yml
+-a----        20-10-2025     10:39            284 docker.yml
+-a----        20-10-2025     10:39          39857 ec2-user@ip-172-31-41-136~ansible_project.txt
+-a----        20-10-2025     10:39            114 gaurav.yml
+-a----        20-10-2025     10:39           2059 How to create hash password for linux compatible.txt
+-a----        20-10-2025     10:39           2459 id_rsa.pem
+-a----        20-10-2025     10:39          44767 Lab1-AD-hoc commands to connect the nodes and executed the some
+                                                  commands..txt
+-a----        20-10-2025     10:39           1972 Lab1-Used Commands.txt
+-a----        20-10-2025     10:39          14675 Lab2- Creation of webserver by Modules commands on nodes.txt
+-a----        20-10-2025     10:39           1480 Lab2-Used commands.txt
+-a----        20-10-2025     10:39           4390 Lab3-Creating users via modules on nodes.txt
+-a----        20-10-2025     10:39              0 Lab3-Used Commands.txt
+-a----        20-10-2025     10:39           8829 Lab4- Creation of webserver using playbook.txt
+-a----        20-10-2025     10:39           3661 Lab5- Remove httpd.txt
+-a----        20-10-2025     10:39          28150 Lab6- Create user + httpd installation.txt
+-a----        20-10-2025     10:39            123 myhosts.ini
+-a----        20-10-2025     10:39            197 removeapache.yml
+-a----        20-10-2025     15:17            407 soft.yml
+-a----        20-10-2025     10:39             91 task.yml
+-a----        20-10-2025     10:46            344 user.yml
+-a----        20-10-2025     16:42            429 userloop.yml
+-a----        20-10-2025     10:21            551 vars-stopped.yml
+-a----        20-10-2025     10:20            457 vars.yml
+
+
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab>
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ssh -i .\id_rsa.pem ec2-user@3.110.158.33
+The authenticity of host '3.110.158.33 (3.110.158.33)' can't be established.
+ED25519 key fingerprint is SHA256:3SP9JAkQDoZ26yr91XyGjTTOrP4EPjLkKAPhnn6JC24.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.110.158.33' (ED25519) to the list of known hosts.
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-9-125 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible all --list-host
+  hosts (2):
+    node1
+    node2
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls -l
+total 12
+-rw-r--r--. 1 ec2-user ec2-user   63 Oct 26 06:58 ansible.cfg
+-rw-rw-r--. 1 ec2-user ec2-user 2459 Oct 20 05:09 id_rsa.pem
+-rw-r--r--. 1 ec2-user ec2-user  123 Oct 26 07:22 myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ chmod 700 id_rsa.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@3.111.47.118 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+The authenticity of host '3.111.47.118 (3.111.47.118)' can't be established.
+ED25519 key fingerprint is SHA256:4cdKo2hi2ILc7mqYVfBaIgV0GMlCOTQ/aCfW+sWG2oU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.111.47.118' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@3.109.3.219 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys
+"
+The authenticity of host '3.109.3.219 (3.109.3.219)' can't be established.
+ED25519 key fingerprint is SHA256:wX3r+jKZFxuhnE+9+U3ZsbCiW5JjD3eRggWbVzW3FsI.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.109.3.219' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ la -l
+-bash: la: command not found
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls -l
+total 16
+-rw-r--r--. 1 ec2-user ec2-user   63 Oct 26 06:58 ansible.cfg
+-rwx------. 1 ec2-user ec2-user 2459 Oct 20 05:09 id_rsa.pem
+-rw-r--r--. 1 ec2-user ec2-user  175 Oct 26 07:30 myhosts.ini
+-rw-rw-r--. 1 ec2-user ec2-user 1674 Oct 26 07:29 ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ chmod 700 ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat /etc/os-release
+NAME="Amazon Linux"
+VERSION="2023"
+ID="amzn"
+ID_LIKE="fedora"
+VERSION_ID="2023"
+PLATFORM_ID="platform:al2023"
+PRETTY_NAME="Amazon Linux 2023.9.20250929"
+ANSI_COLOR="0;33"
+CPE_NAME="cpe:2.3:o:amazon:amazon_linux:2023"
+HOME_URL="https://aws.amazon.com/linux/amazon-linux-2023/"
+DOCUMENTATION_URL="https://docs.aws.amazon.com/linux/"
+SUPPORT_URL="https://aws.amazon.com/premiumsupport/"
+BUG_REPORT_URL="https://github.com/amazonlinux/amazon-linux-2023"
+VENDOR_NAME="AWS"
+VENDOR_URL="https://aws.amazon.com/"
+SUPPORT_END="2029-06-30"
+[ec2-user@ip-172-31-9-125 ansible_project]$ touch cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible all --list-hosts
+  hosts (3):
+    node1
+    node2
+    node3
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@3.111.47.118 "mkdir -p ~/.client_loop: send disconnect: Connection reset
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> cat ~/.ssh/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ec2-user@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+cat : Cannot find path 'C:\Users\Gaurav.26\.ssh\id_rsa.pub' because it does not exist.
+At line:1 char:1
++ cat ~/.ssh/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ec2-user@35.154.8 ...
++ ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Gaurav.26\.ssh\id_rsa.pub:String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+The authenticity of host '35.154.85.141 (35.154.85.141)' can't be established.
+ED25519 key fingerprint is SHA256:yOtIKBcdWdX02inTXyThFFqhA0w77C0jMJ2hVt/6/aQ.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '35.154.85.141' (ED25519) to the list of known hosts.
+ec2-user@35.154.85.141: Permission denied (publickey).
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> cat ~/.ssh/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+cat : Cannot find path 'C:\Users\Gaurav.26\.ssh\id_rsa.pub' because it does not exist.
+At line:1 char:1
++ cat ~/.ssh/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ubuntu@35.154.85. ...
++ ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Gaurav.26\.ssh\id_rsa.pub:String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ssh -i .\id_rsa.pem ec2-user@3.110.158.33
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Oct 26 07:21:03 2025 from 103.146.111.99
+[ec2-user@ip-172-31-9-125 ~]$  cat ~/.ssh/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+Warning: Identity file .ubuntu-key-new.pem not accessible: No such file or directory.
+The authenticity of host '35.154.85.141 (35.154.85.141)' can't be established.
+ED25519 key fingerprint is SHA256:yOtIKBcdWdX02inTXyThFFqhA0w77C0jMJ2hVt/6/aQ.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '35.154.85.141' (ED25519) to the list of known hosts.
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ ls -a
+.  ..  .ansible  .bash_history  .bash_logout  .bash_profile  .bashrc  .ssh  .viminfo  ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls -a
+.  ..  ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cd .ssh
+-bash: cd: .ssh: No such file or directory
+[ec2-user@ip-172-31-9-125 ansible_project]$ cd ..
+[ec2-user@ip-172-31-9-125 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd ..
+[ec2-user@ip-172-31-9-125 home]$ ls
+ec2-user
+[ec2-user@ip-172-31-9-125 home]$ ls -a
+.  ..  ec2-user
+[ec2-user@ip-172-31-9-125 home]$ cd ec2-user/
+[ec2-user@ip-172-31-9-125 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ ls -a
+.  ..  .ansible  .bash_history  .bash_logout  .bash_profile  .bashrc  .ssh  .viminfo  ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd .ssh
+[ec2-user@ip-172-31-9-125 .ssh]$ ls
+authorized_keys  id_rsa  id_rsa.pub  known_hosts  known_hosts.old  ubuntu-keys
+[ec2-user@ip-172-31-9-125 .ssh]$ cd ubuntu-keys/
+[ec2-user@ip-172-31-9-125 ubuntu-keys]$ ls
+id_rsa  id_rsa.pub
+[ec2-user@ip-172-31-9-125 ubuntu-keys]$ cd ..
+[ec2-user@ip-172-31-9-125 .ssh]$ pwd
+/home/ec2-user/.ssh
+[ec2-user@ip-172-31-9-125 .ssh]$ cd ubuntu-keys/
+[ec2-user@ip-172-31-9-125 ubuntu-keys]$ ls
+id_rsa  id_rsa.pub
+[ec2-user@ip-172-31-9-125 ubuntu-keys]$ pwd
+/home/ec2-user/.ssh/ubuntu-keys
+[ec2-user@ip-172-31-9-125 ubuntu-keys]$ cd ..
+[ec2-user@ip-172-31-9-125 .ssh]$ cd ..
+[ec2-user@ip-172-31-9-125 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >>
+~/.ssh/authorized_keys"
+Warning: Identity file .ubuntu-key-new.pem not accessible: No such file or directory.
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/
+.ssh/authorized_keys"
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/
+.ssh/authorized_keys"
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ./ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >>
+~/.ssh/authorized_keys"
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$ ssh -i id_rsa.pem
+Display all 1273 possibilities? (y or n)
+[ec2-user@ip-172-31-9-125 ansible_project]$ ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.14.0-1011-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Sun Oct 26 08:00:54 UTC 2025
+
+  System load:  0.01              Processes:             115
+  Usage of /:   26.0% of 6.71GB   Users logged in:       1
+  Memory usage: 21%               IPv4 address for enX0: 172.31.12.96
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Sun Oct 26 07:44:01 2025 from 13.233.177.4
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-12-96:~$ ls
+ubuntu@ip-172-31-12-96:~$ ls
+ubuntu@ip-172-31-12-96:~$ ls -a
+.  ..  .bash_logout  .bashrc  .cache  .profile  .ssh
+ubuntu@ip-172-31-12-96:~$ cd .ssh
+ubuntu@ip-172-31-12-96:~/.ssh$ ls
+authorized_keys  id_rsa  id_rsa.pub
+ubuntu@ip-172-31-12-96:~/.ssh$ cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClnPXGf3q7R0MQO/EOUGl8jDvjST0gqalYVEFpXHZAUUV4QgOL5c3RFVFh7VDv/gnlpmiqynndmmiiyYXr9IQCadwGw+nzJVOZGccJl4iRul0H3dqdkSD7RggC0hV5O7dHu7N2IwwdF85AhVaH1fG1DP1587bP054K/DuOpba7ThFKw4qukQBF4akElipPaa2k9OJrPd3eJHKr8gd0iTYJkJ1lRXvF07njgP7YeNhaz4SIM9snQ5BQJG2BMOLugvJSgvStPvG4BCXlY169VQjIJjorpw5FJQBIwRiscVBj9UFJ4cIOMBP889pOVdb/QN5EVDAu/xlBdF1X0wYYxrAL ubuntu-key-new
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCs1GunZRGPS7MTZKEAKLz+TYP/0TX9zfMms5Ed2qy/zNKVN13Qg7h2aC4oirecFVJlzyiNp0cDgeLHtsPgptEgA54sW6f4OEfs4Y0EGzGFyT/k6yyqxdrveswou8+MOnxa0ccNqZGRGSs3mrsS+/z0VlTVw1LkwLCPQfpNvGrnIoVTB1Eek0g6vVoiaJh/jsTSCWQ8phqsjeB+HGiOj/GPFUbGaxIWKAf7lqASe7bVwgn6tnxFOyKSfp97xWCPVQdxuR2T4bY6VSQ2/F8bzBBFlhcBAerc5JupghILFKT5eAO3KOkUGvs25B985sI3778BMxfDj/BD4XdmtbbRMMe1o/NimoQr03zFDXSfDE9E7A0TTLAeV8yz8y1PSdQvdE5jIZDL5UhFxeSP3uMrrMpTUu6sfJbO2Ao4xNK7BTnuZ4b3ygbVVNoe2eUmiBS3DogKkb5smU2+ZEeGJSN3wbg/L4JxVh/KGSejZWEto5X6a0jgHp5HbRv3vuia4kEnl4k= ubuntu@ip-172-31-12-96
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCs1GunZRGPS7MTZKEAKLz+TYP/0TX9zfMms5Ed2qy/zNKVN13Qg7h2aC4oirecFVJlzyiNp0cDgeLHtsPgptEgA54sW6f4OEfs4Y0EGzGFyT/k6yyqxdrveswou8+MOnxa0ccNqZGRGSs3mrsS+/z0VlTVw1LkwLCPQfpNvGrnIoVTB1Eek0g6vVoiaJh/jsTSCWQ8phqsjeB+HGiOj/GPFUbGaxIWKAf7lqASe7bVwgn6tnxFOyKSfp97xWCPVQdxuR2T4bY6VSQ2/F8bzBBFlhcBAerc5JupghILFKT5eAO3KOkUGvs25B985sI3778BMxfDj/BD4XdmtbbRMMe1o/NimoQr03zFDXSfDE9E7A0TTLAeV8yz8y1PSdQvdE5jIZDL5UhFxeSP3uMrrMpTUu6sfJbO2Ao4xNK7BTnuZ4b3ygbVVNoe2eUmiBS3DogKkb5smU2+ZEeGJSN3wbg/L4JxVh/KGSejZWEto5X6a0jgHp5HbRv3vuia4kEnl4k= ubuntu@ip-172-31-12-96
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCs1GunZRGPS7MTZKEAKLz+TYP/0TX9zfMms5Ed2qy/zNKVN13Qg7h2aC4oirecFVJlzyiNp0cDgeLHtsPgptEgA54sW6f4OEfs4Y0EGzGFyT/k6yyqxdrveswou8+MOnxa0ccNqZGRGSs3mrsS+/z0VlTVw1LkwLCPQfpNvGrnIoVTB1Eek0g6vVoiaJh/jsTSCWQ8phqsjeB+HGiOj/GPFUbGaxIWKAf7lqASe7bVwgn6tnxFOyKSfp97xWCPVQdxuR2T4bY6VSQ2/F8bzBBFlhcBAerc5JupghILFKT5eAO3KOkUGvs25B985sI3778BMxfDj/BD4XdmtbbRMMe1o/NimoQr03zFDXSfDE9E7A0TTLAeV8yz8y1PSdQvdE5jIZDL5UhFxeSP3uMrrMpTUu6sfJbO2Ao4xNK7BTnuZ4b3ygbVVNoe2eUmiBS3DogKkb5smU2+ZEeGJSN3wbg/L4JxVh/KGSejZWEto5X6a0jgHp5HbRv3vuia4kEnl4k= ubuntu@ip-172-31-12-96
+ubuntu@ip-172-31-12-96:~/.ssh$ vi authorized_keys
+ubuntu@ip-172-31-12-96:~/.ssh$ exit
+logout
+Connection to 35.154.85.141 closed.
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ./ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >>~/.ssh/authorized_keys"
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/
+.ssh/authorized_keys"
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$  cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/
+.ssh/authorized_keys"\
+>  cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/
+.ssh/authorized_keys"\
+>
+ubuntu@35.154.85.141: Permission denied (publickey).
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ./ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >>
+~/.ssh/authorized_keys"
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/
+.ssh/authorized_keys"
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$ client_loop: send disconnect: Connection reset
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >>
+>> ~/.ssh/authorized_keys"
+cat : Cannot find path 'C:\Users\Gaurav.26\.ssh\ubuntu-keys\id_rsa.pub' because it does not exist.
+At line:1 char:1
++ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i .\ubuntu-key-new.pem ubunt ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\Gaurav...keys\id_rsa.pub:String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+ubuntu@35.154.85.141: Permission denied (publickey).
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ssh -i .\id_rsa.pem ec2-user@3.110.158.33
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Oct 26 07:43:07 2025 from 103.146.111.99
+[ec2-user@ip-172-31-9-125 ~]$
+[ec2-user@ip-172-31-9-125 ~]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"cd ansible
+Warning: Identity file ubuntu-key-new.pem not accessible: No such file or directory.
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/ubuntu-keys/id_rsa.pub | ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$ client_loop: send disconnect: Connection reset
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ssh -i .\id_rsa.pem ec2-user@3.110.158.33
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Oct 26 08:10:02 2025 from 103.146.111.99
+[ec2-user@ip-172-31-9-125 ~]$
+[ec2-user@ip-172-31-9-125 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$ ssh -i ubuntu-key-new.pem ubuntu@35.154.85.141
+
+
+
+ubuntu@35.154.85.141: Permission denied (publickey).
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cd .ssh
+-bash: cd: .ssh: No such file or directory
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ cd ..
+[ec2-user@ip-172-31-9-125 ~]$ ks
+-bash: ks: command not found
+[ec2-user@ip-172-31-9-125 ~]$ ls -a
+.  ..  .ansible  .bash_history  .bash_logout  .bash_profile  .bashrc  .ssh  .viminfo  ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd. a
+-bash: cd.: command not found
+[ec2-user@ip-172-31-9-125 ~]$ cd .ssh
+[ec2-user@ip-172-31-9-125 .ssh]$ ls
+authorized_keys  id_rsa  id_rsa.pub  known_hosts  known_hosts.old  ubuntu-keys
+[ec2-user@ip-172-31-9-125 .ssh]$ rm -rf ubuntu-keys
+[ec2-user@ip-172-31-9-125 .ssh]$ ls
+authorized_keys  id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+[ec2-user@ip-172-31-9-125 .ssh]$ cd ..
+[ec2-user@ip-172-31-9-125 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ rm -rf ubuntu-key-new.pem
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible all --list-hosts
+  hosts (3):
+    node1
+    node2
+    node3
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ubuntu@3.110.90.59 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+The authenticity of host '3.110.90.59 (3.110.90.59)' can't be established.
+ED25519 key fingerprint is SHA256:RxzaG6LK/a+VNkfnVIJ7yAhPLDssu9yRLCAt8evSPrk.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.110.90.59' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansibleclient_loop: send disconnect: Connection reset
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab> ssh -i .\id_rsa.pem ec2-user@3.110.158.33
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Oct 26 08:12:41 2025 from 103.146.111.99
+[ec2-user@ip-172-31-9-125 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-9-125 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+ok: [node3]
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+ERROR! the field 'hosts' is required but was not set
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+ 23L, 475B written
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat cond-apace.yml
+--- # condition file for apahe installation
+
+- name: installation apache server in diffrent diffrent OS
+  hosts: webservers
+  user: ec2-user
+  become: yes
+  connection: ssh
+
+
+- tasks:
+
+    - name: install apache in fedora linux
+      yum:
+        name: httpd
+        state: present
+      when:    ansible_os_family == "RedHat"
+
+
+    - name: install apache in ubuntu linux
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+ok: [node3]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [install apache in fedora linux] **********************************************************************************************************************
+skipping: [node3]
+changed: [node2]
+changed: [node1]
+
+TASK [install apache in ubuntu linux] **********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+changed: [node3]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/home/ec2-user/ansible_project/cond-apace.yml': line 21, column 4, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: install apache in ubuntu linux
+   ^ here
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/home/ec2-user/ansible_project/cond-apace.yml': line 22, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    - name: install apache in ubuntu linux
+     apt:
+     ^ here
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml
+ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/home/ec2-user/ansible_project/cond-apace.yml': line 25, column 6, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        state: present
+     notify: apache2 installed start service
+     ^ here
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml --check
+VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Aug 01 2025 00:00:00)
+Unknown option argument: "--check"
+More info with: "vim -h"
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml --check
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+ok: [node3]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+
+TASK [install apache in fedora linux] **********************************************************************************************************************
+skipping: [node3]
+ok: [node2]
+ok: [node1]
+
+TASK [install apache in ubuntu linux] **********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+ok: [node3]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+ok: [node3]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [install apache in fedora linux] **********************************************************************************************************************
+skipping: [node3]
+ok: [node2]
+ok: [node1]
+
+TASK [install apache in ubuntu linux] **********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+ok: [node3]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat cond-apace.yml
+--- # condition file for apahe installation
+
+- name: installation apache server in diffrent diffrent OS
+  hosts: webservers
+  become: yes
+  connection: ssh
+
+
+  tasks:
+
+    - name: install apache in fedora linux
+      yum:
+        name: httpd
+        state: present
+      notify: httpd installed start service
+      when:    ansible_os_family == "RedHat"
+
+
+
+
+    - name: install apache in ubuntu linux
+      apt:
+        name: apache2
+        state: present
+      notify: apache2 installed start service
+      when: ansible_os_family == "Debian"
+
+
+  handlers:
+
+      - name: apache2 installed start service
+        service:
+           name: apache2
+           state: started
+           enabled: yes
+
+      - name: create index file for ubuntu machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1> this is ubuntu server </h1>"
+
+
+      - name: httpd installed start service
+        service:
+           name: httpd
+           state: started
+           enabled: yes
+
+
+      - name: create index file for linux machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1> this is amazon linux </h1>"
+
+
+
+
+
+
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml --check
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+ok: [node3]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [install apache in fedora linux] **********************************************************************************************************************
+skipping: [node3]
+ok: [node2]
+ok: [node1]
+
+TASK [install apache in ubuntu linux] **********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+ok: [node3]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+ 63L, 1295B written
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat cond-apace.yml
+--- # condition file for apahe installation
+
+- name: installation apache server in diffrent diffrent OS
+  hosts: webservers
+  become: yes
+  connection: ssh
+
+
+  tasks:
+
+    - name: install apache in fedora linux
+      yum:
+        name: httpd
+        state: present
+      notify:
+        - httpd installed start service
+        - create index file for linux machine
+      when:    ansible_os_family == "RedHat"
+
+
+
+
+    - name: install apache in ubuntu linux
+      apt:
+        name: apache2
+        state: present
+      notify:
+        - apache2 installed start service
+        - create index file for ubuntu machine
+      when: ansible_os_family == "Debian"
+
+
+  handlers:
+
+      - name: apache2 installed start service
+        service:
+           name: apache2
+           state: started
+           enabled: yes
+
+      - name: create index file for ubuntu machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1> this is ubuntu server </h1>"
+
+
+      - name: httpd installed start service
+        service:
+           name: httpd
+           state: started
+           enabled: yes
+
+
+      - name: create index file for linux machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1> this is amazon linux </h1>"
+
+
+
+
+
+
+[ec2-user@ip-172-31-9-125 ansible_project]$  vi cond-apace.yml
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml --check
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+ok: [node3]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [install apache in fedora linux] **********************************************************************************************************************
+skipping: [node3]
+ok: [node2]
+ok: [node1]
+
+TASK [install apache in ubuntu linux] **********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+ok: [node3]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ touch new.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi new.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook new.yml --check
+
+PLAY [Installation Apache server on different OS types] ****************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+ok: [node3]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [Install Apache on Fedora] ****************************************************************************************************************************
+skipping: [node3]
+ok: [node2]
+ok: [node1]
+
+TASK [Install Apache on Ubuntu] ****************************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+ok: [node3]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi new.yml
+ 49L, 1223B written
+[ec2-user@ip-172-31-9-125 ansible_project]$ rm -rf new.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi cond-apace.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat cond-apace.yml
+--- # condition file for apahe installation
+
+- name: installation apache server in diffrent diffrent OS
+  hosts: webservers
+  become: yes
+  connection: ssh
+
+
+  tasks:
+
+    - name: install apache in fedora linux
+      yum:
+        name: httpd
+        state: present
+      notify:
+        - httpd installed start service
+        - create index file for linux machine
+      when:    ansible_os_family == "RedHat"
+
+
+
+
+    - name: install apache in ubuntu linux
+      apt:
+        name: apache2
+        state: present
+      notify:
+        - apache2 installed start service
+        - create index file for ubuntu machine
+      when: ansible_os_family == "Debian"
+
+
+  handlers:
+
+      - name: apache2 installed start service
+        service:
+           name: apache2
+           state: started
+           enabled: yes
+
+      - name: create index file for ubuntu machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1>this is ubuntu server</h1>"
+
+
+      - name: httpd installed start service
+        service:
+           name: httpd
+           state: started
+           enabled: yes
+
+
+      - name: create index file for linux machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1>this is amazon linux</h1>"
+
+
+
+
+
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-9-125 ansible_project]$ touch remove.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ vi remove.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook remove.yml
+
+PLAY [Uninstall Apache server from different OS types] *****************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+ok: [node3]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [Uninstall httpd from Fedora/Amazon Linux] ************************************************************************************************************
+skipping: [node3]
+changed: [node2]
+changed: [node1]
+
+TASK [Uninstall apache2 from Ubuntu] ***********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+changed: [node3]
+
+TASK [Remove index file from /var/www/html] ****************************************************************************************************************
+ok: [node3]
+ok: [node1]
+ok: [node2]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook new.yml --check
+ERROR! the playbook: new.yml could not be found
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml --check
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+ok: [node3]
+
+TASK [install apache in fedora linux] **********************************************************************************************************************
+skipping: [node3]
+changed: [node2]
+changed: [node1]
+
+TASK [install apache in ubuntu linux] **********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+changed: [node3]
+
+RUNNING HANDLER [apache2 installed start service] **********************************************************************************************************
+fatal: [node3]: FAILED! => {"changed": false, "msg": "Could not find the requested service apache2: host"}
+
+RUNNING HANDLER [httpd installed start service] ************************************************************************************************************
+fatal: [node2]: FAILED! => {"changed": false, "msg": "Could not find the requested service httpd: host"}
+fatal: [node1]: FAILED! => {"changed": false, "msg": "Could not find the requested service httpd: host"}
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=2    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0
+node2                      : ok=2    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0
+node3                      : ok=2    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ ansible-playbook cond-apace.yml
+
+PLAY [installation apache server in diffrent diffrent OS] **************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+ok: [node3]
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+
+TASK [install apache in fedora linux] **********************************************************************************************************************
+skipping: [node3]
+changed: [node2]
+changed: [node1]
+
+TASK [install apache in ubuntu linux] **********************************************************************************************************************
+skipping: [node1]
+skipping: [node2]
+changed: [node3]
+
+RUNNING HANDLER [apache2 installed start service] **********************************************************************************************************
+ok: [node3]
+
+RUNNING HANDLER [create index file for ubuntu machine] *****************************************************************************************************
+changed: [node3]
+
+RUNNING HANDLER [httpd installed start service] ************************************************************************************************************
+changed: [node2]
+changed: [node1]
+
+RUNNING HANDLER [create index file for linux machine] ******************************************************************************************************
+changed: [node2]
+changed: [node1]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node2                      : ok=4    changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+node3                      : ok=4    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-9-125 ansible_project]$ ls
+ansible.cfg  cond-apace.yml  id_rsa.pem  myhosts.ini  remove.yml
+[ec2-user@ip-172-31-9-125 ansible_project]$ cat myhosts.ini
+[webservers]
+
+node1 ansible_host=172.31.0.163 ansible_user=ec2-user
+node2 ansible_host=172.31.14.181 ansible_user=ec2-user
+node3 ansible_host=172.31.8.10 ansible_user=ubuntu
+[ec2-user@ip-172-31-9-125 ansible_project]$
+Broadcast message from root@localhost (Sun 2025-10-26 09:41:15 UTC):
+
+The system will power off now!
+
+Connection to 3.110.158.33 closed by remote host.
+Connection to 3.110.158.33 closed.
+PS C:\Users\Gaurav.26\Downloads\Ansible-Lab>
