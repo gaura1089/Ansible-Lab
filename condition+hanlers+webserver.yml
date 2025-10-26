@@ -1,0 +1,63 @@
+--- # condition file for apahe installation
+
+- name: installation apache server in diffrent diffrent OS
+  hosts: webservers
+  become: yes
+  connection: ssh
+
+
+  tasks: 
+   
+    - name: install apache in fedora linux
+      yum: 
+        name: httpd
+        state: present
+      notify: 
+        - httpd installed start service
+        - create index file for linux machine
+      when:    ansible_os_family == "RedHat"
+
+     
+ 
+ 
+    - name: install apache in ubuntu linux
+      apt:
+        name: apache2
+        state: present
+      notify: 
+        - apache2 installed start service
+        - create index file for ubuntu machine
+      when: ansible_os_family == "Debian"
+
+
+  handlers:
+      
+      - name: apache2 installed start service
+        service: 
+           name: apache2
+           state: started
+           enabled: yes
+
+      - name: create index file for ubuntu machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1>this is ubuntu server</h1>"
+
+
+      - name: httpd installed start service
+        service:
+           name: httpd
+           state: started
+           enabled: yes
+
+
+      - name: create index file for linux machine
+        copy:
+          dest: /var/www/html/index.html
+          content: "<h1>this is amazon linux</h1>"
+
+
+
+
+
+

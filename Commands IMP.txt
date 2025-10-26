@@ -3,9 +3,9 @@ node1 ansible_host=172.31.44.16 ansible_user=ec2-user
 cat ~/.ssh/id_rsa.pub | ssh ec2-user@13.201.3.188 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 
 
- cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.235.104.211 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@ 13.234.225.71 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 
-cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.235.254.120 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@3.6.41.186 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 
 
 
@@ -42,6 +42,9 @@ sudo grep gaurav3 /etc/shadow
 python3 -c "import crypt; print(crypt.crypt('Gu@102831', '\$6\$FixedSalt123'))"
 
 mkpasswd --method=SHA-512 --salt=FixedSalt123 Gu@102831
+
+
+$6$FixedSalt123$JdBrMinCJ8QqTQTTmvEiuydzhS6mF30w64HoY/XRnFtc/VFYjtuYIRjdeFPV1xxAFeIQkdVyJDcbGCJesKTn6.
 
 
 
