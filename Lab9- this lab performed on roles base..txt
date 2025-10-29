@@ -1,0 +1,484 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\Gaurav.26> cd .\Downloads\repo\Linux-mac\
+PS C:\Users\Gaurav.26\Downloads\repo\Linux-mac> ls
+
+
+    Directory: C:\Users\Gaurav.26\Downloads\repo\Linux-mac
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        14-10-2025     02:13                .terraform
+-a----        14-10-2025     02:13           1377 .terraform.lock.hcl
+-a----        29-10-2025     17:55           1081 Ansible-Server.tf
+-a----        29-10-2025     17:55           1534 Chef-Server-v2.tf
+-a----        28-10-2025     08:55           2635 id_rsa
+-a----        28-10-2025     08:55            594 id_rsa.pub
+-a----        29-10-2025     17:55            135 key-pairs.tf
+-a----        29-10-2025     17:56            844 Node.tf
+-a----        29-10-2025     17:56             45 provider.tf
+-a----        29-10-2025     17:58          23446 terraform.tfstate
+-a----        29-10-2025     17:58          17433 terraform.tfstate.backup
+
+
+PS C:\Users\Gaurav.26\Downloads\repo\Linux-mac>
+PS C:\Users\Gaurav.26\Downloads\repo\Linux-mac> ssh -i  .\id_rsa ec2-user@15.207.116.4
+The authenticity of host '15.207.116.4 (15.207.116.4)' can't be established.
+ED25519 key fingerprint is SHA256:FI/NGFN46rOe1Azp+1EfHZ4+EU4xbzakXGfVUBCsdyo.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '15.207.116.4' (ED25519) to the list of known hosts.
+
+A newer release of "Amazon Linux" is available.
+  Version 2023.9.20251014:
+  Version 2023.9.20251020:
+  Version 2023.9.20251027:
+Run "/usr/bin/dnf check-release-update" for full release and version update info
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-15-126 ~]$ ls
+ansible_project
+[ec2-user@ip-172-31-15-126 ~]$ cd ansible_project/
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-15-126 ansible_project]$
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  myhosts.ini
+[ec2-user@ip-172-31-15-126 ansible_project]$ vi myhosts.ini
+[ec2-user@ip-172-31-15-126 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.127.218.114 "mkdir -p
+ ~/.ssh && cat >> ~/.ssh/authorized_keys"
+The authenticity of host '13.127.218.114 (13.127.218.114)' can't be established.
+ED25519 key fingerprint is SHA256:XRVJ/em7ycvmt2yJK5yoYdkK6/vxUDmuaj+UpzNmiI0.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.127.218.114' (ED25519) to the list of known hosts.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for 'id_rsa.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "id_rsa.pem": bad permissions
+ec2-user@13.127.218.114: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+[ec2-user@ip-172-31-15-126 ansible_project]$ chmod 700 id_rsa.pem
+[ec2-user@ip-172-31-15-126 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.127.218.114 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+[ec2-user@ip-172-31-15-126 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@65.2.122.28 "mkdir -p ~/
+.ssh && cat >> ~/.ssh/authorized_keys"
+The authenticity of host '65.2.122.28 (65.2.122.28)' can't be established.
+ED25519 key fingerprint is SHA256:2EF06SAV70QLIdoR1DWRFXXHg5NdtXRoa/RYQx6Z20o.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '65.2.122.28' (ED25519) to the list of known hosts.
+[ec2-user@ip-172-31-15-126 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.200.242.195 "mkdir -p
+ ~/.ssh && cat >> ~/.ssh/authorized_keys"
+The authenticity of host '13.200.242.195 (13.200.242.195)' can't be established.
+ED25519 key fingerprint is SHA256:eNZLvudgSRqumsiZyLMhib6c/WSmyr0MjFh/wzdbEqo.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.200.242.195' (ED25519) to the list of known hosts.
+ec2-user@13.200.242.195: Permission denied (publickey).
+[ec2-user@ip-172-31-15-126 ansible_project]$ cat ~/.ssh/id_rsa.pub | ssh -i id_rsa.pem ec2-user@13.200.242.195 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+ec2-user@13.200.242.195: Permission denied (publickey).
+[ec2-user@ip-172-31-15-126 ansible_project]$
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini
+[ec2-user@ip-172-31-15-126 ansible_project]$ ansible all --list-host
+  hosts (3):
+    node1
+    node2
+    node3
+[ec2-user@ip-172-31-15-126 ansible_project]$ ansible all --list-host
+  hosts (3):
+    node1
+    node2
+    node3
+[ec2-user@ip-172-31-15-126 ansible_project]$ ansible all --list-host
+  hosts (3):
+    node1
+    node2
+    node3
+[ec2-user@ip-172-31-15-126 ansible_project]$
+[ec2-user@ip-172-31-15-126 ansible_project]$ tree
+-bash: tree: command not found
+[ec2-user@ip-172-31-15-126 ansible_project]$ yum install tree -y
+Error: This command has to be run with superuser privileges (under the root user on most systems).
+[ec2-user@ip-172-31-15-126 ansible_project]$ sudo su
+[root@ip-172-31-15-126 ansible_project]# yum install tree -y
+Last metadata expiration check: 0:17:04 ago on Wed Oct 29 12:28:20 2025.
+Dependencies resolved.
+========================================================================================================================
+ Package               Architecture            Version                               Repository                    Size
+========================================================================================================================
+Installing:
+ tree                  x86_64                  1.8.0-6.amzn2023.0.2                  amazonlinux                   56 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package
+
+Total download size: 56 k
+Installed size: 113 k
+Downloading Packages:
+tree-1.8.0-6.amzn2023.0.2.x86_64.rpm                                                    1.8 MB/s |  56 kB     00:00
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                   951 kB/s |  56 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                1/1
+  Installing       : tree-1.8.0-6.amzn2023.0.2.x86_64                                                               1/1
+  Running scriptlet: tree-1.8.0-6.amzn2023.0.2.x86_64                                                               1/1
+  Verifying        : tree-1.8.0-6.amzn2023.0.2.x86_64                                                               1/1
+========================================================================================================================
+WARNING:
+  A newer release of "Amazon Linux" is available.
+
+  Available Versions:
+
+  Version 2023.9.20251014:
+    Run the following command to upgrade to 2023.9.20251014:
+
+      dnf upgrade --releasever=2023.9.20251014
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251014.html
+
+  Version 2023.9.20251020:
+    Run the following command to upgrade to 2023.9.20251020:
+
+      dnf upgrade --releasever=2023.9.20251020
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251020.html
+
+  Version 2023.9.20251027:
+    Run the following command to upgrade to 2023.9.20251027:
+
+      dnf upgrade --releasever=2023.9.20251027
+
+    Release notes:
+     https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.9.20251027.html
+
+========================================================================================================================
+
+Installed:
+  tree-1.8.0-6.amzn2023.0.2.x86_64
+
+Complete!
+[root@ip-172-31-15-126 ansible_project]# exit
+exit
+[ec2-user@ip-172-31-15-126 ansible_project]$
+[ec2-user@ip-172-31-15-126 ansible_project]$ tree
+.
+├── ansible.cfg
+├── id_rsa.pem
+└── myhosts.ini
+
+0 directories, 3 files
+[ec2-user@ip-172-31-15-126 ansible_project]$ mkdir -p playbook
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini  playbook
+[ec2-user@ip-172-31-15-126 ansible_project]$ cd playbook/
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+[ec2-user@ip-172-31-15-126 playbook]$ tre
+-bash: tre: command not found
+[ec2-user@ip-172-31-15-126 playbook]$ tree
+.
+
+0 directories, 0 files
+[ec2-user@ip-172-31-15-126 playbook]$ touch master.yml
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml
+[ec2-user@ip-172-31-15-126 playbook]$ mkdir roles
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml  roles
+[ec2-user@ip-172-31-15-126 playbook]$ cd roles/
+[ec2-user@ip-172-31-15-126 roles]$ mkdir webrole
+[ec2-user@ip-172-31-15-126 roles]$ ls
+webrole
+[ec2-user@ip-172-31-15-126 roles]$ cd webrole/
+[ec2-user@ip-172-31-15-126 webrole]$ ls
+[ec2-user@ip-172-31-15-126 webrole]$ mkdir tasks
+[ec2-user@ip-172-31-15-126 webrole]$ mkdir vars handlers
+[ec2-user@ip-172-31-15-126 webrole]$ ls
+handlers  tasks  vars
+[ec2-user@ip-172-31-15-126 webrole]$ cd ..
+[ec2-user@ip-172-31-15-126 roles]$ cd ..
+[ec2-user@ip-172-31-15-126 playbook]$ tree
+.
+├── master.yml
+└── roles
+    └── webrole
+        ├── handlers
+        ├── tasks
+        └── vars
+
+5 directories, 1 file
+[ec2-user@ip-172-31-15-126 playbook]$ cd ..
+[ec2-user@ip-172-31-15-126 ansible_project]$ tree
+.
+├── ansible.cfg
+├── id_rsa.pem
+├── myhosts.ini
+└── playbook
+    ├── master.yml
+    └── roles
+        └── webrole
+            ├── handlers
+            ├── tasks
+            └── vars
+
+6 directories, 4 files
+[ec2-user@ip-172-31-15-126 ansible_project]$ ansible all --list-host
+  hosts (3):
+    node1
+    node2
+    node3
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini  playbook
+[ec2-user@ip-172-31-15-126 ansible_project]$ cd pla
+-bash: cd: pla: No such file or directory
+[ec2-user@ip-172-31-15-126 ansible_project]$
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini  playbook
+[ec2-user@ip-172-31-15-126 ansible_project]$ cd playbook/
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml  roles
+[ec2-user@ip-172-31-15-126 playbook]$
+[ec2-user@ip-172-31-15-126 playbook]$
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml  roles
+[ec2-user@ip-172-31-15-126 playbook]$ vi master.yml
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml  roles
+[ec2-user@ip-172-31-15-126 playbook]$ cd roles/
+[ec2-user@ip-172-31-15-126 roles]$ ls
+webrole
+[ec2-user@ip-172-31-15-126 roles]$ ls
+webrole
+[ec2-user@ip-172-31-15-126 roles]$ cd webrole/
+[ec2-user@ip-172-31-15-126 webrole]$ ls
+handlers  tasks  vars
+[ec2-user@ip-172-31-15-126 webrole]$ cd tasks/
+[ec2-user@ip-172-31-15-126 tasks]$ ls
+[ec2-user@ip-172-31-15-126 tasks]$ cd ../../..
+[ec2-user@ip-172-31-15-126 playbook]$ tree
+.
+├── master.yml
+└── roles
+    └── webrole
+        ├── handlers
+        ├── tasks
+        └── vars
+
+5 directories, 1 file
+[ec2-user@ip-172-31-15-126 playbook]$ touch /roles/webrole/tasks/main.yml
+touch: cannot touch '/roles/webrole/tasks/main.yml': No such file or directory
+[ec2-user@ip-172-31-15-126 playbook]$ touch roles/webrole/tasks/main.yml
+[ec2-user@ip-172-31-15-126 playbook]$ tree
+.
+├── master.yml
+└── roles
+    └── webrole
+        ├── handlers
+        ├── tasks
+        │   └── main.yml
+        └── vars
+
+5 directories, 2 files
+[ec2-user@ip-172-31-15-126 playbook]$ touch roles/webrole/handlers/main.yml
+[ec2-user@ip-172-31-15-126 playbook]$ tree
+.
+├── master.yml
+└── roles
+    └── webrole
+        ├── handlers
+        │   └── main.yml
+        ├── tasks
+        │   └── main.yml
+        └── vars
+
+5 directories, 3 files
+[ec2-user@ip-172-31-15-126 playbook]$ vi roles/webrole/tasks/main.yml
+[ec2-user@ip-172-31-15-126 playbook]$ vi roles/webrole/tasks/main.yml
+[ec2-user@ip-172-31-15-126 playbook]$ vi roles/webrole/handlers/main.yml
+[ec2-user@ip-172-31-15-126 playbook]$ vi master.yml
+
+[ec2-user@ip-172-31-15-126 playbook]$ cat master.yml
+--- # master yml file which define target
+
+- hosts: webservers
+  become: yes
+  roles:
+
+     - webrole
+
+
+
+[ec2-user@ip-172-31-15-126 playbook]$
+[ec2-user@ip-172-31-15-126 playbook]$ cat roles/webrole/handlers/main.yml
+- name: docker is insatlled now enable the service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+[ec2-user@ip-172-31-15-126 playbook]$ cat roles/webrole/tasks/main.yml
+- name: install the httpd
+  yum:
+    name: httpd
+    state: present
+
+
+
+- name: run the httpd service
+  service:
+    name: httpd
+    enabled: yes
+    state: started
+
+
+- name: create index file
+  copy:
+     dest: /var/www/html/index.html
+     content: "<h1> hare krishna </h1>"
+
+- name: install the tree
+  yum:
+     name: tree
+     state: present
+
+
+- name: install docker
+  yum:
+    name: docker
+    state: present
+  notify: docker is insatlled now enable the service
+
+
+
+
+
+
+
+
+
+[ec2-user@ip-172-31-15-126 playbook]$ ansible-playbook master.yml
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+[WARNING]: Could not match supplied host pattern, ignoring: webservers
+
+PLAY [webservers] ******************************************************************************************************************************************
+skipping: no hosts matched
+
+PLAY RECAP *************************************************************************************************************************************************
+
+[ec2-user@ip-172-31-15-126 playbook]$ ansible-playbook master.yml --check
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+[WARNING]: Could not match supplied host pattern, ignoring: webservers
+
+PLAY [webservers] ******************************************************************************************************************************************
+skipping: no hosts matched
+
+PLAY RECAP *************************************************************************************************************************************************
+
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml  roles
+[ec2-user@ip-172-31-15-126 playbook]$ cd ..
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini  playbook
+[ec2-user@ip-172-31-15-126 ansible_project]$ tree
+.
+├── ansible.cfg
+├── id_rsa.pem
+├── myhosts.ini
+└── playbook
+    ├── master.yml
+    └── roles
+        └── webrole
+            ├── handlers
+            │   └── main.yml
+            ├── tasks
+            │   └── main.yml
+            └── vars
+
+6 directories, 6 files
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  myhosts.ini  playbook
+[ec2-user@ip-172-31-15-126 ansible_project]$ cd playbook/
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml  roles
+[ec2-user@ip-172-31-15-126 playbook]$ cd ..
+[ec2-user@ip-172-31-15-126 ansible_project]$ pwd
+/home/ec2-user/ansible_project
+[ec2-user@ip-172-31-15-126 ansible_project]$ cd playbook/
+[ec2-user@ip-172-31-15-126 playbook]$ cp * /home/ec2-user/ansible_project
+cp: -r not specified; omitting directory 'roles'
+[ec2-user@ip-172-31-15-126 playbook]$ cp * /home/ec2-user/ansible_project -r
+[ec2-user@ip-172-31-15-126 playbook]$ ls
+master.yml  roles
+[ec2-user@ip-172-31-15-126 playbook]$ cd ..
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  master.yml  myhosts.ini  playbook  roles
+[ec2-user@ip-172-31-15-126 ansible_project]$ rm -rf playbook/
+[ec2-user@ip-172-31-15-126 ansible_project]$ ls
+ansible.cfg  id_rsa.pem  master.yml  myhosts.ini  roles
+[ec2-user@ip-172-31-15-126 ansible_project]$ ansible-playbook master.yml
+
+PLAY [webservers] ******************************************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************************************************
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node1]
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.15/reference_appendices/interpreter_discovery.html for more
+information.
+ok: [node2]
+fatal: [node3]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 172.31.3.153 port 22: No route to host", "unreachable": true}
+
+TASK [webrole : install the httpd] *************************************************************************************************************************
+changed: [node1]
+changed: [node2]
+
+TASK [webrole : run the httpd service] *********************************************************************************************************************
+changed: [node1]
+changed: [node2]
+
+TASK [webrole : create index file] *************************************************************************************************************************
+changed: [node1]
+changed: [node2]
+
+TASK [webrole : install the tree] **************************************************************************************************************************
+changed: [node1]
+changed: [node2]
+
+TASK [webrole : install docker] ****************************************************************************************************************************
+changed: [node1]
+changed: [node2]
+
+RUNNING HANDLER [webrole : docker is insatlled now enable the service] *************************************************************************************
+changed: [node1]
+changed: [node2]
+
+PLAY RECAP *************************************************************************************************************************************************
+node1                      : ok=7    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node2                      : ok=7    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node3                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0
+
+[ec2-user@ip-172-31-15-126 ansible_project]$

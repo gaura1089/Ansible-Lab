@@ -1,0 +1,39 @@
+- name: install the httpd 
+  yum: 
+    name: httpd
+    state: present
+
+
+
+- name: run the httpd service
+  service: 
+    name: httpd
+    enabled: yes
+    state: started
+
+
+- name: create index file 
+  copy:
+     dest: /var/www/html/index.html
+     content: "<h1> hare krishna </h1>"
+
+- name: install the tree 
+  yum: 
+     name: tree
+     state: present
+
+
+- name: install docker
+  yum: 
+    name: docker 
+    state: present
+  notify: docker is insatlled now enable the service
+
+
+
+
+
+
+
+
+

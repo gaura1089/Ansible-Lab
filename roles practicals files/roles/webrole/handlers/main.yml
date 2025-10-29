@@ -1,0 +1,5 @@
+- name: docker is insatlled now enable the service
+  service: 
+    name: docker 
+    state: started
+    enabled: yes

@@ -1,0 +1,10 @@
+--- # master yml file which define target
+
+- hosts: webservers
+  become: yes
+  roles: 
+
+     - webrole
+
+
+  
