@@ -1,0 +1,11 @@
+---
+ install_packages:
+   - git 
+   - docker 
+   - httpd
+   - tree
+   - wget 
+   - python3
+   - unzip
+   - telnet
+
